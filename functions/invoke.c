@@ -12,6 +12,9 @@ void hello() {
 }
 
 
-/* Add your main function below */
+int main() {
 
+  /* Add your code to invoke hello below */
+
+}
 
