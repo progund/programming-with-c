@@ -16,5 +16,6 @@ int main() {
 
   /* Add your code to invoke hello below */
 
+  return 0;
 }
 
