@@ -4,27 +4,31 @@
 
 
 #define PRINT_TYPE(t, min, max) \
-  printf("%.20s\n=======================\n" \
-         " size:     %d byte(s)\n"          \
-         " decimal:\n------------\n"        \
-         "   min: %lld\n"                   \
-         "   max: %lld\n"                   \
-         " hexadecimal:\n------------\n"    \
-         "   min: %llx\n"                   \
-         "   max: %llx\n\n",                \
-         #t,                                \
-         sizeof(t),                         \
-         min, max,                          \
+  printf("%.20s\n=======================\n"  \
+         " size:     %d byte(s)\n\n"         \
+         "  decimal:\n  ------------\n"      \
+         "    min: %lld\n"                   \
+         "    max: %lld\n"                   \
+         "  hexadecimal:\n  ------------\n"  \
+         "    min: %llx\n"                   \
+         "    max: %llx\n\n",                \
+         #t,                                 \
+         sizeof(t),                          \
+         min, max,                           \
          min, max);
 
 #define PRINT_UTYPE(t, min, max) \
-  printf("%.20s\n--------------------\n" \
-         " %d byte(s)\n"                       \
-         " dec:  %lld\n       %llu\n"\
-         " hex:  %llux\n       %llux\n\n",    \
-         #t, \
-         sizeof(t), \
-         min, max,  \
+  printf("%.20s\n =======================\n" \
+         "  size:     %d byte(s)\n\n"        \
+         "  decimal:\n  ------------\n"      \
+         "    min: %lld\n"                   \
+         "    max: %llu\n"                   \
+         "  hexadecimal:\n  ------------\n"  \
+         "    min: %llux\n"                  \
+         "    max: %llx\n\n",               \
+         #t,                                 \
+         sizeof(t),                          \
+         min, max,                           \
          min, max);
 
 int  main() {
