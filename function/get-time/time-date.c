@@ -1,6 +1,20 @@
 #include <stdio.h>
 #include <time.h>
+#include "time-date.h"
 
+static char*months[]= {
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December" };
 
 static struct tm *get_current_time() {
    time_t rawtime;
@@ -10,6 +24,7 @@ static struct tm *get_current_time() {
    current_time = localtime( &rawtime );
    return current_time;
 }  
+
 
 void print_current_date() {
   struct tm *ct = get_current_time();
@@ -44,5 +59,18 @@ int current_hour() {
 
 int current_min() {
   return get_current_time()->tm_min;
+}
+
+char * current_month_name() {
+  return months[current_month()-1];
+}
+
+char * month_name(unsigned char month) {
+  //  printf("%d => %d \n", month, (month-1)%12);
+  return months[(month-1)%12];
+}
+
+void print_month_name(unsigned char month) {
+  printf("%s\n", month_name(month));
 }
 

@@ -5,3 +5,6 @@ int current_sec(void);
 int current_hour(void);
 int current_min(void);
 void print_current_date();
+char * current_month_name();
+char * month_name(unsigned char month);
+void print_month_name(unsigned char month);
