@@ -11,9 +11,9 @@ static struct tm *get_current_time() {
    return current_time;
 }  
 
-int print_current_date() {
+void print_current_date() {
   struct tm *ct = get_current_time();
-  printf ("%4d-%2d-%2d %2d:%2d:%2d\n",
+  printf ("%.4d-%.2d-%.2d %.2d:%.2d:%.2d\n",
           1900+ct->tm_year,
           ct->tm_mon+1,
           ct->tm_mday,
