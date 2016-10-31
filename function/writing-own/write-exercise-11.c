@@ -3,7 +3,7 @@
 
 /*
  *
- * The test belows are by no means an optimal way to write tests, but
+ * The tests below are by no means an optimal way to write tests, but
  * they will do for now
  *
  */
