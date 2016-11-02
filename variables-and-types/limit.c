@@ -43,11 +43,20 @@
 
 int  main() {
   PRINT_STR_AND_SIZE(unsigned char);
-  printf (" min: %d %x\n", 0, 0);
-  printf (" max: %d %x\n", UCHAR_MAX, UCHAR_MAX);
+  printf (" min: %d 0x%x\n", 0, 0);
+  printf (" max: %d 0x%x\n", UCHAR_MAX, UCHAR_MAX);
+
   PRINT_STR_AND_SIZE(char);
-  printf (" min: %d %x\n", CHAR_MIN, CHAR_MIN);
-  printf (" max: %d %x\n", CHAR_MAX, CHAR_MAX);
-  return 0;
+  printf (" min: %d 0x%x\n", CHAR_MIN, CHAR_MIN);
+  printf (" max: %d 0x%x\n", CHAR_MAX, CHAR_MAX);
+
+  PRINT_STR_AND_SIZE(unsigned int);
+  printf (" min: %d 0x%x\n", 0, 0);
+  printf (" max: %ud 0x%x\n", UINT_MAX, UINT_MAX);
+
+  PRINT_STR_AND_SIZE(int);
+  printf (" min: %d 0x%x\n", INT_MIN, INT_MIN);
+  printf (" max: %d 0x%x\n", INT_MAX, INT_MAX);
+return 0;
 }
 
