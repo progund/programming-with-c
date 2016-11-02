@@ -66,8 +66,8 @@ int  main() {
   printf (" max: %lud 0x%llx\n", ULONG_MAX, ULONG_MAX);
 
   PRINT_STR_AND_SIZE(long int);
-  printf (" min: %ld 0x%llx\n", LONG_MIN, LONG_MIN);
-  printf (" max: %ld 0x%llx\n", LONG_MAX, LONG_MAX);
+  printf (" min: %lld 0x%llx\n", LONG_MIN, LONG_MIN);
+  printf (" max: %lld 0x%llx\n", LONG_MAX, LONG_MAX);
 
   return 0;
 }
