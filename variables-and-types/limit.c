@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <limits.h>
-#include <values.h>
-
 
 #define PRINT_TYPE(t, min, max) \
   printf("%.20s\n=======================\n"  \
