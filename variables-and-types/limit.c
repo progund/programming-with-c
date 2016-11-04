@@ -39,7 +39,7 @@
   PRINT_UTYPE(unsigned long, 0,        ULONG_MAX);
 */
 
-#define PRINT_STR_AND_SIZE(a) printf("\n%.20s (%d bytes)\n------------------\n", #a, sizeof(a))
+#define PRINT_STR_AND_SIZE(a) printf("\n%.20s (%lud bytes)\n------------------\n", #a, sizeof(a))
 
 int  main() {
   // char
@@ -62,12 +62,12 @@ int  main() {
 
   // long int
   PRINT_STR_AND_SIZE(unsigned long int);
-  printf (" min: %ld 0x%x\n", 0, 0);
-  printf (" max: %lud 0x%llx\n", ULONG_MAX, ULONG_MAX);
+  printf (" min: %ld 0x%x\n", (unsigned long int)0, 0);
+  printf (" max: %lud 0x%lx\n", ULONG_MAX, ULONG_MAX);
 
   PRINT_STR_AND_SIZE(long int);
-  printf (" min: %lld 0x%llx\n", LONG_MIN, LONG_MIN);
-  printf (" max: %lld 0x%llx\n", LONG_MAX, LONG_MAX);
+  printf (" min: %ld 0x%lx\n", LONG_MIN, LONG_MIN);
+  printf (" max: %ld 0x%lx\n", LONG_MAX, LONG_MAX);
 
   return 0;
 }
