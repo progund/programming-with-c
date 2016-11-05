@@ -40,6 +40,5 @@ int main(int argc, char **argv)
     {
       printf("2, 2 failed\n");
     }
-  printf ("All tests passed if no fail messages abve\n");
-  
+  printf ("All tests passed if no fail messages abve\n");  
 }
