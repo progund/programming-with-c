@@ -2,7 +2,7 @@
 
 /*
  *
- * SImple program printing the value of an int variable as well as the
+ * Simple program printing the value of an int variable as well as the
  * address of the same variable
  *
  */

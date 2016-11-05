@@ -1,10 +1,24 @@
 #include <stdio.h>
 
+/*
+ *
+ * Program showing how chaning the value of a an int variable via a
+ * pointer to its memory works
+ *
+ */
+
 
 int main()
 {
   int  x  = 12;
+  // declare xp as a pointer to int
+  // assign it the address of x
   int *xp = &x;
+  // xp now points to the address of x
+
+  // declare an int variable y
+  // assign it the value of where xp points to
+  // *xp means roughly "go to where xp points"
   int  y  = *xp; 
 
   printf ("x value:   %d \n", x);
