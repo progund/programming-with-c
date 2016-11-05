@@ -1,9 +1,27 @@
+/*
+
+  Small c file to show how one coud write a parser - without external
+  help (such as getopt etc)
+
+
+ */ 
+
 #include <stdio.h>
 #include <string.h>
 
 #define OK           0
 #define SYNTAX_ERROR 1
 
+/*
+ * Parses the suplied arguments 
+ *
+ *    argc - the number of arguments supplied
+ *    argv - the user arguments (including the program namne)
+ *
+ * Using a loop we can "traverse" the arguments passed by the user and
+ * take action on valid or invalid input
+ *
+ */
 int
 parse_args(int argc, char **argv)
 {
@@ -25,6 +43,7 @@ parse_args(int argc, char **argv)
         return SYNTAX_ERROR;
       }
   }
+  return OK;
 }
 
 
@@ -47,5 +66,7 @@ int main(int argc, char **argv)
   printf ("------------------\n");
   int ret = parse_args(argc, argv);
   printf (" * Parse went: %d\n", ret);
-  
+
+  // If parse went bad, return it
+  return ret;
 }
