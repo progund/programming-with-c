@@ -2,6 +2,11 @@
 #include <time.h>
 #include "time-date.h"
 
+/*
+ *
+ * An (so called) array storing the month names
+ *
+ */
 static char*months[]= {
   "January",
   "February",
@@ -16,6 +21,8 @@ static char*months[]= {
   "November",
   "December" };
 
+/* Internal (can not be used by any other file) function returning the
+   current time, as an tm struct */
 static struct tm *get_current_time() {
    time_t rawtime;
    struct tm *current_time;
@@ -25,6 +32,8 @@ static struct tm *get_current_time() {
    return current_time;
 }  
 
+
+/* functions below documented in header file */
 
 void print_current_date() {
   struct tm *ct = get_current_time();
