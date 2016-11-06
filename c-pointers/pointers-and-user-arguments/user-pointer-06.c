@@ -19,7 +19,7 @@ int main(int argc, char **argv)
       /* Compare the length of the string AND if the arguments have
          the same content (up to the length of "--terminate"
       */
-      if (strlen(argv[i])==strlen)("--terminate" &&
+      if (strlen(argv[i])==strlen("--terminate") &&
           strncmp(argv[i], "--terminate", strlen("--terminate"))==0)
         {
           break;
