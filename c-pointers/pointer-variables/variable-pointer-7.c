@@ -1,4 +1,9 @@
 #include <stdio.h>
 
-#define swap_int(a,b) int tmp=a; a=b; b=tmp;
+int main() {
 
+  long salary;
+  long *salary_ptr;
+
+  return 0;
+}

@@ -10,7 +10,7 @@ int main() {
   studentsp = &students;
   
   printf ("students:  %d\n", students);
-  printf ("studentsp: %p\n", studentsp);
+  printf ("studentsp: %d\n", studentsp);
 
   return 0;
 }

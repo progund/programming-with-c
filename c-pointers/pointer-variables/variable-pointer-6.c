@@ -1,24 +1,18 @@
 #include <stdio.h>
 
-void swap (int *x, int *y) {
-     int tmp = *x;
-     *x = *y;
-     *y = tmp;
-}
-
-
 int main() {
 
-  int girls = 12;
-  int boys = 11;
-
-  printf ("girls: %d  boys: %d\n",
-          girls, boys);
-
-  swap(&girls, &boys);
-
-  printf ("girls: %d  boys: %d\n",
-          girls, boys);
+  int  students;
+  int *studentsp;
   
+  students = 12;
+
+  studentsp = &students;
+
+  *studentsp = 17;
+  
+  printf ("students:  %d\n", students);
+  printf ("studentsp: %p\n", studentsp);
+
   return 0;
 }

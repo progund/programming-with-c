@@ -1,15 +1,12 @@
 #include <stdio.h>
 
-void swap (int x, int y) {
-     int tmp = x;
-     x = y;
-     y = tmp;
-}
-
-
 int main() {
 
-  swap(12, 34);
+  int students;
+  
+  students = 12;
+
+  printf ("students: %d\n", students);
 
   return 0;
 }

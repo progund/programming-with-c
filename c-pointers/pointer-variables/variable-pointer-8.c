@@ -1,20 +1,12 @@
 #include <stdio.h>
 
-#define swap_int(a,b) int tmp=a; a=b; b=tmp;
-
-
 int main() {
 
-  int girls = 12;
-  int boys = 11;
+  long salary;
+  long *salary_ptr;
 
-  printf ("girls: %d  boys: %d\n",
-          girls, boys);
+  salary = 50000; /*dream on*/
+  salary_ptr = &salary;
 
-  swap_int(girls, boys);
-
-  printf ("girls: %d  boys: %d\n",
-          girls, boys);
-  
   return 0;
 }
