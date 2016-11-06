@@ -11,8 +11,9 @@ int main()
   /* print the value */
   printf ("x value:     %d\n", x);
   /* print the address 
+     we cast since "%p"expects a void* instead of the int* we supply
   */
-  printf ("x address:   %p\n", &x);
+  printf ("x address:   %p\n", (void*)&x);
 
   
   return 0;
