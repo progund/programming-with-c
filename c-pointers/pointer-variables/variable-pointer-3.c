@@ -15,7 +15,7 @@ int main() {
 
   studentsp = &students;
   
-  printf ("students: %d\n", students);
+  printf ("students:  %d\n", students);
 
   return 0;
 }

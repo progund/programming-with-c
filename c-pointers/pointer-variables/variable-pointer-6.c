@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/*
+ *
+ * Program showing how to use pointer variables
+ *
+ */
+
 int main() {
 
   int  students;
@@ -12,7 +18,7 @@ int main() {
   *studentsp = 17;
   
   printf ("students:  %d\n", students);
-  printf ("studentsp: %p\n", studentsp);
+  printf ("studentsp: %p\n", (void*)studentsp);
 
   return 0;
 }
