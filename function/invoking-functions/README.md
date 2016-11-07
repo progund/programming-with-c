@@ -36,10 +36,11 @@ found at our Vimeo account [Rikard and Henrik](https://vimeo.com/user52531669).
 
 ## Who's using the material
 
-Our material is currently being used at [Gothenburg
-University](http://www.gu.se) and [Chalmers University of
-Technology](http://www.chalmers.se),
-[IT-högskolan](http://www.iths.se/) and [Yrgo](http://yrgo.se/).
+Our material is currently being used at
+* [Gothenburg University](http://www.gu.se)
+* [Chalmers University of Technology](http://www.chalmers.se),
+* [IT-högskolan](http://www.iths.se/)
+* [Yrgo](http://yrgo.se/).
 
 ## Our books
 
