@@ -21,8 +21,9 @@ come back with information on how to best contact us.
 
 # About our material
 
-The book consists of text, videos, exercises and suggested solutions,
-all under a free license, [Creative Commons
+The book consists of [text](http://virt08.itu.chalmers.se/mediawiki),
+[videos](https://vimeo.com/channels/1156505), exercises and suggested
+solutions, all under a free license, [Creative Commons
 Attribution-NonCommercial-ShareAlike](https://creativecommons.org/licenses/by-nc-sa/3.0/)
 so you can follow the course, use the material as you want, adapt the
 material etc. We do, however, require that you keep the license and
@@ -31,7 +32,7 @@ read the link above.
 
 All is centered around our
 [wiki](http://virt08.itu.chalmers.se/mediawiki) and the videos can be
-found at our Vimeo account [RIkard and Henrik](https://vimeo.com/user52531669).
+found at our Vimeo account [Rikard and Henrik](https://vimeo.com/user52531669).
 
 ## Who's using the material
 
