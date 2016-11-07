@@ -48,9 +48,9 @@ Technology](http://www.chalmers.se),
 
 ### Under development
 
-Introduction to databases
-Crash course in Android programming
-More programming with Java
+* Introduction to databases
+* Crash course in Android programming
+* More programming with Java
 
 # Interaction
 
