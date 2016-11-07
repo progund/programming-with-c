@@ -42,9 +42,9 @@ Technology](http://www.chalmers.se),
 
 ## Our books
 
-[Programming with Java](http://virt08.itu.chalmers.se/mediawiki/index.php/Programming_with_Java)
-[Bash introduction](http://virt08.itu.chalmers.se/mediawiki/index.php/Bash-introduction) 
-[Programming with C](http://virt08.itu.chalmers.se/mediawiki/index.php/Programming_with_C)
+* [Programming with Java](http://virt08.itu.chalmers.se/mediawiki/index.php/Programming_with_Java)
+* [Bash introduction](http://virt08.itu.chalmers.se/mediawiki/index.php/Bash-introduction) 
+* [Programming with C](http://virt08.itu.chalmers.se/mediawiki/index.php/Programming_with_C)
 
 ### Under development
 
