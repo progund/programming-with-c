@@ -1,11 +1,7 @@
 # Tech books - learn how to program
 
-The files here are part of our books in programming. With our book we
-hope that it will be easy and fun to learn how to program. Our
-material is free, using [Creative Commons
-Attribution-NonCommercial-ShareAlike](https://creativecommons.org/licenses/by-nc-sa/3.0/),
-so all you need to do is join us - no fees, no registration, no
-nothing.
+The files here are part of our books in programming. With our books we
+hope that it will be easy and fun to learn how to program. 
 
 # About us
 
@@ -30,13 +26,10 @@ material etc. We do, however, require that you keep the license and
 that you attribute us. For more information about the license please
 read the link above.
 
-All is centered around our
-[wiki](http://virt08.itu.chalmers.se/mediawiki) and the videos can be
-found at our Vimeo account [Rikard and Henrik](https://vimeo.com/user52531669).
-
 ## Who's using the material
 
 Our material is currently being used at
+
 * [Gothenburg University](http://www.gu.se)
 * [Chalmers University of Technology](http://www.chalmers.se)
 * [IT-högskolan](http://www.iths.se/)
@@ -56,8 +49,8 @@ Our material is currently being used at
 
 # Interaction
 
-We suck at social interaction, mainly because we work all the
-time. Every now and then we try to get a message across.
+We suck at social interaction, mainly because we work hard
+instead. Every now and then we try to get a message across.
 
 ## Blog
 
@@ -70,6 +63,8 @@ time. Every now and then we try to get a message across.
 # Contribute
 
 We are receiving lots of feedback from our students. Listening to our
-students, pupils, users, customer or what ever is what makes our work
-fun. Don't hesitate to contact us.
+students, pupils, users, customer or what ever is what makes our
+material better and our work fun.
+
+Don't hesitate to contact us.
 
