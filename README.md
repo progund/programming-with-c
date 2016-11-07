@@ -38,18 +38,18 @@ found at our Vimeo account [Rikard and Henrik](https://vimeo.com/user52531669).
 
 Our material is currently being used at
 * [Gothenburg University](http://www.gu.se)
-* [Chalmers University of Technology](http://www.chalmers.se),
+* [Chalmers University of Technology](http://www.chalmers.se)
 * [IT-högskolan](http://www.iths.se/)
-* [Yrgo](http://yrgo.se/).
+* [Yrgo](http://yrgo.se/)
 
 ## Our books
 
 * [Programming with Java](http://virt08.itu.chalmers.se/mediawiki/index.php/Programming_with_Java)
 * [Bash introduction](http://virt08.itu.chalmers.se/mediawiki/index.php/Bash-introduction) 
-* [Programming with C](http://virt08.itu.chalmers.se/mediawiki/index.php/Programming_with_C)
 
 ### Under development
 
+* [Programming with C](http://virt08.itu.chalmers.se/mediawiki/index.php/Programming_with_C)
 * Introduction to databases
 * Crash course in Android programming
 * More programming with Java
