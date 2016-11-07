@@ -1,4 +1,4 @@
-# Programming with C
+# Tech books - learn how to program
 
 The files here are part of our books in programming. With our book we
 hope that it will be easy and fun to learn how to program. Our
@@ -74,7 +74,7 @@ fun. Don't hesitate to contact us.
 # About this chapter
 
 This chapter on [Wiki page C
-pointers](http://virt08.itu.chalmers.se/mediawiki/index.php/Chapter:C_Pointers):
+pointers](http://virt08.itu.chalmers.se/mediawiki/index.php/Chapter:C_Pointers)
 ([videos](https://vimeo.com/channels/1156505)) are part of
 the book [Programming with
 C](http://virt08.itu.chalmers.se/mediawiki/index.php/Programming_with_C)
