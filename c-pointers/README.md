@@ -58,8 +58,9 @@ We suck at social interaction, mainly because we work all the
 time. Every now and then we try to get a message across.
 
 ## Blog
-(English)[https://programmingpedagogy.wordpress.com/] and
-(Swedish)[https://programmeringspedagogik.wordpress.com/].
+
+[English](https://programmingpedagogy.wordpress.com/) and
+[Swedish](https://programmeringspedagogik.wordpress.com/).
 
 ## Twitter
 [prog_edu](https://twitter.com/prog_edu)
