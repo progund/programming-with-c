@@ -59,8 +59,8 @@ time. Every now and then we try to get a message across.
 
 ## Blog
 
-[English](https://programmingpedagogy.wordpress.com/) and
-[Swedish](https://programmeringspedagogik.wordpress.com/).
+* Programming pedagogy, [English](https://programmingpedagogy.wordpress.com/)
+* Programmeringspedagogik, [Swedish](https://programmeringspedagogik.wordpress.com/
 
 ## Twitter
 [prog_edu](https://twitter.com/prog_edu)
