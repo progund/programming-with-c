@@ -32,5 +32,11 @@ int main()
   assert (max(13,14)==14);
   printf (" OK\n");
 
+  /* The code below is really stupid ..... if it wasn't for the fact
+     that we want to see what happens on a failed assert */
+  printf ("Make assert fail:          ");
+  assert (max(13,14)==1);
+  printf (" OK\n");
+
   return 0;
 }
