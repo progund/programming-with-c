@@ -41,7 +41,7 @@
 
 #define PRINT_STR_AND_SIZE(a) printf("\n%.20s (%lud bytes)\n------------------\n", #a, sizeof(a))
 
-int  main() {
+int  main(void) {
   // char
   PRINT_STR_AND_SIZE(unsigned char);
   printf (" min: %d 0x%x\n", 0, 0);
