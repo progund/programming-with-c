@@ -5,7 +5,6 @@
  *  @author Rikard Fröberg
  *  @bug most likely tons of it...
  */
-
 #ifndef PARSER_H
 #define PARSER_H
 
@@ -23,7 +22,8 @@ enum {
   MISSING_ARGUMENTS
 };
 
-/** @brief Parses user arguments in to an expr. The arguments should be the same as supplied to the main function. 
+/** @brief Parses user arguments in to an expr. The arguments should
+ * be the same as supplied to the main function.
  *
  *  The easiest way to use this function is to pass the main function's arguments, like this
  * <pre>
@@ -38,8 +38,7 @@ enum {
  * </pre>
  *
  *  @param argc number of arguments
- *  @param argv
- *  @param op2 The second operand
+ *  @param argv an array of strings (operand operator operand)
  *  @param e A pointer to an expression. This is filled with the parsed data
  *  @return 0 on success, else -1
  */
