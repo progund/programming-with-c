@@ -1,6 +1,7 @@
-#include "expression.h"
 #include <stdio.h>
 #include <string.h>
+
+#include "expression.h"
 
 
 /* must be the same order as the enum (operator) in the header file*/
@@ -58,16 +59,35 @@ int args_to_expr(char *op1,
                  char *op2,
                  expr *e)
 {
+  /* from the string op1, we (try to) scan an integer (%d) and store
+   * it in op1 in the expr (e). 
+   * 
+   * How do reach op1 in e? Let's Start be dereferencing e
+   *   *e ... or (*e)
+   * and from that use op1
+   *   (*e).op1  ... or ((*e).op1)
+   * ok, we have the op1 "variable in our hand"... let's pass a ref to it
+   *   &((*e).op1)
+   * We can pass &((*e).op1)
+   * 
+   * ..... or we can use the -> to "get to" op1
+   *   e->op1 
+   * and a ref to that: &e->op1
+   * 
+   */
   if (sscanf(op1, "%d",&e->op1)!=1)
     {
       return -1;
     }
-  
-  e->op = (string_to_op(op));
+
+  /* Use the function to turn a string into an operator */
+  e->op = string_to_op(op);
   if (e->op==-1)
     {
+      /* failed turning the str into an op */
       return -1;
-    }  
+    }
+  /* see above */
   if (sscanf(op2, "%d", &e->op2)!=1)
     {
       return -1;

@@ -6,7 +6,6 @@
 int
 parse_user_args(int argc, char **argv, expr *e)
 {
-
   if ( (argc<4) || (e==NULL) )
     {
       return MISSING_ARGUMENTS;
@@ -23,8 +22,8 @@ parse_user_args(int argc, char **argv, expr *e)
 void
 usage(FILE *f)
 {
-  fprintf (f, "calc\n");
-  fprintf (f, "    a command line calculator\n");
+  fprintf (f, "NAME\n");
+  fprintf (f, "  calc - a command line calculator\n");
   fprintf (f, "\n");
   fprintf (f, "SYNTAX\n");
   fprintf (f, "    calc operand operator operand\n");
@@ -38,5 +37,4 @@ usage(FILE *f)
   fprintf (f, "\n");
   fprintf (f, "\n");
   fprintf (f, "\n");
-  
 }
