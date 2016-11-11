@@ -3,6 +3,7 @@
 #include <string.h>
 
 
+/* must be the same order as the enum (operator) in the header file*/
 static char * op_strings[] =
   {
     "+",
@@ -20,6 +21,10 @@ comp_str(char* a, char* b)
     {
       return -1;
     }
+
+  /* Perhaps a bit overly optimised, but we like to make you think about this one
+   * If two strings are of different length they can't be "equal"
+   */
   if (strlen(a)!=strlen(b))
     {
       return -1;
@@ -31,6 +36,11 @@ static char
 string_to_op(char *str)
 {
   char i=-1;
+  /* Loop through the operatings (as strings) and see if we can find
+     the operator If found we return the index. This code will not
+     work if the operators in the enum (operator) are in different
+     order compared to the string array (op_strings)
+  */
   while (op_strings[(int)++i]!=NULL)
     {
       /* printf ("i: %d  %s %s \n", */
