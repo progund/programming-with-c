@@ -79,6 +79,10 @@ int args_to_expr(char *op1,
 void
 print_expr(expr *e)
 {
+  if (e==NULL)
+    {
+      return ;
+    }
   /*
    *
    * Add code to print out the "variables in the struct"
@@ -96,6 +100,10 @@ print_expr(expr *e)
 int
 calc_expression(expr *e, int *result)
 {
+  if ( (e==NULL) || (result==NULL) )
+    {
+      return -1;
+    }
   /*
    *
    * In this function you should do the calculation of the expr. 
