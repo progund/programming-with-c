@@ -36,8 +36,8 @@ enum
 typedef struct expr_ 
 {
   char op;  /** operator (int representation, value range is enum operator) */
-  int op1;  /** operator1 */
-  int op2;  /** operator2 */
+  int op1;  /** operand 1 */
+  int op2;  /** operand */
 } expr;
 
 
