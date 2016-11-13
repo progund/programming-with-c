@@ -103,6 +103,9 @@ print_expr(expr *e)
     {
       return ;
     }
+
+  /* YOUR CODE GOES HERE */
+  
   /*
    *
    * Add code to print out the "variables in the struct"
@@ -124,6 +127,8 @@ calc_expression(expr *e, int *result)
     {
       return -1;
     }
+  /* YOUR CODE GOES HERE */
+
   /*
    *
    * In this function you should do the calculation of the expr. This
