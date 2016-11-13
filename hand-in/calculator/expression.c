@@ -126,12 +126,16 @@ calc_expression(expr *e, int *result)
     }
   /*
    *
-   * In this function you should do the calculation of the expr. 
+   * In this function you should do the calculation of the expr. This
+   * means you need to use the expr (pointed to by e) and
    *
-   * This means you need to use the expr (pointed to by e) and 
-   * 1) see what operator is in the expr
-   * 2) based on (1) you should calculate the result and store the result in 
-   *    the memory pointed to the result pointer
+   * 1) see what operator is in the expr (compare e->op with MINUS,
+   * PLUS, ....)
+   *
+   * 2) based on (1) you should calculate the result and store the
+   *    result (e g e->op1 + e->op2 for PLUS) in the memory pointed to
+   *    the result pointer: *result
+   *
    * 3) if you could not find a valid operator, return -1
    *
    */
