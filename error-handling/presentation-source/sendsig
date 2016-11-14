@@ -2,12 +2,13 @@
 
 CYGWIN=$(uname | grep CYG | wc -l)
 
-sendsig() {
+dosendsig() {
 
     if [ "$CYGWIN" != "1" ]
     then
         PID=$(ps auxww| grep "./signal-ex" | grep -v grep | awk '{ printf $2}');
     else
+        
         PID=$(ps auxww| grep "/signal-ex" | grep -v grep | awk '{ printf $1}');
     fi
     kill -$1 $PID;
@@ -15,5 +16,5 @@ sendsig() {
 
 
 
-sendsig $1
+dosendsig $1
 
