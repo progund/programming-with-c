@@ -4,6 +4,21 @@
 #include <unistd.h>
 #include <signal.h>
 
+/*
+ * Simple program to catch signals and handle accordingly
+ *
+ * If you want to send a signal using bash:
+ *
+ *  1. define a bash function (type the below in your terminal running bash):
+ *
+ *     sendsig() { PID=$(ps auxww| grep "./signal-ex" | grep -v grep | awk '{ printf $2}'); kill -$1 $PID; }
+ *
+ *  2. Use the function, 
+ *
+ *     sendsig SIGINT
+ *
+ */
+
 static struct tm *get_current_time(void) {
    time_t rawtime;
    struct tm *current_time;
@@ -41,7 +56,7 @@ void handle_usr(int sigid)
     {
       printf ("signal received... %d\n", sigid);
       global_ctr -= 10  ;
-    }
+      }
   else if (sigid==SIGINT)
     {
       printf ("interrupt signal received... %d\n", sigid);
@@ -51,8 +66,12 @@ void handle_usr(int sigid)
 int main(void)
 {
   signal(SIGUSR1, handle_usr);
-  signal(SIGUSR2, handle_usr);
-  signal(SIGINT, handle_usr);
+
+  /* remove this if you want to "catch" SIGUSR2 */ 
+  //  signal(SIGUSR2, handle_usr);
+
+  /* remove this if you want to "catch" SIGINT (caused by ctrl-c)*/
+  //signal(SIGINT, handle_usr);
   
   while (1)
     {
