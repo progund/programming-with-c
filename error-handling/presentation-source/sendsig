@@ -4,7 +4,7 @@ CYGWIN=$(uname | grep CYG | wc -l)
 
 sendsig() {
 
-    if [ "$CYGWIN" != "0" ]
+    if [ "$CYGWIN" != "1" ]
     then
         PID=$(ps auxww| grep "./signal-ex" | grep -v grep | awk '{ printf $2}');
     else
