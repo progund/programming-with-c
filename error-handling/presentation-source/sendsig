@@ -11,7 +11,7 @@ dosendsig() {
         
         PID=$(ps auxww| grep "/signal-ex" | grep -v grep | awk '{ printf $1}');
     fi
-    kill -$1 $PID;
+    kill "-$1" "$PID"
 }
 
 
