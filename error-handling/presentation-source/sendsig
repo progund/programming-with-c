@@ -7,11 +7,13 @@ dosendsig() {
     if [ "$CYGWIN" != "1" ]
     then
         PID=$(ps auxww| grep "./signal-ex" | grep -v grep | awk '{ printf $2}');
+        kill -$1 $PID
     else
         
         PID=$(ps auxww| grep "/signal-ex" | grep -v grep | awk '{ printf $1}');
+        /usr/bin/kill "-$1" "$PID"
     fi
-    kill "-$1" "$PID"
+
 }
 
 
