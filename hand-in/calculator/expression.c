@@ -114,7 +114,15 @@ print_expr(expr *e)
    * operator is use the op_strings array. To print the string
    * represantation of DIVISION you simple do
    *     printf ("%s",op_strings[DIVISION]);
+   *
+   * Instead of using DIVISION all the time, we "suggest" using the
+   * operator as found in the expression.
    *  
+   * Note: indexing in an array using a char is something the compiler
+   * does not like. You "may" need to typecast the operator (used as
+   * index) to an int.
+   *  
+   *
    */
 
 }
