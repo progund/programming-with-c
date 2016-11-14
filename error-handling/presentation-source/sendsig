@@ -1,0 +1,9 @@
+#!/bin/sh
+
+sendsig() {
+    PID=$(ps auxww| grep "./signal-ex" | grep -v grep | awk '{ printf $2}');
+    kill -$1 $PID;
+}
+
+sendsig $1
+
