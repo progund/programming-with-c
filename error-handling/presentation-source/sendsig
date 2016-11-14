@@ -1,9 +1,19 @@
 #!/bin/sh
 
+CYGWIN=$(uname | grep CYG | wc -l)
+
 sendsig() {
-    PID=$(ps auxww| grep "./signal-ex" | grep -v grep | awk '{ printf $2}');
+
+    if [ "$CYGWIN" != "0" ]
+    then
+        PID=$(ps auxww| grep "./signal-ex" | grep -v grep | awk '{ printf $2}');
+    else
+        PID=$(ps auxww| grep "/signal-ex" | grep -v grep | awk '{ printf $1}');
+    fi
     kill -$1 $PID;
 }
+
+
 
 sendsig $1
 
