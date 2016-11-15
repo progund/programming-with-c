@@ -20,7 +20,7 @@ comp_str(char* a, char* b)
 {
   if(a==NULL || b==NULL)
     {
-      return -1;
+      return 0;
     }
 
   /* Perhaps a bit overly optimised, but we like to make you think about this one
@@ -28,7 +28,7 @@ comp_str(char* a, char* b)
    */
   if (strlen(a)!=strlen(b))
     {
-      return -1;
+      return 0;
     }
   return strcmp(a,b)==0;
 }
@@ -44,8 +44,8 @@ string_to_op(char *str)
   */
   while (op_strings[(int)++i]!=NULL)
     {
-      /* printf ("i: %d  %s %s \n", */
-      /*         i, op_strings[i],str); */
+      printf ("i: %d  %s '%s' \n", 
+              i, op_strings[(int)i],str); 
       if (comp_str(op_strings[(int)i],str))
         {
           return i;
