@@ -53,6 +53,8 @@ check_invalid_args(void)
   check_parser("1", "+" , "a", 1);
   check_parser("1", "a" , "1", 1);
   check_parser("1", "a" , "a", 1);
+  check_parser("1", "++" , "1", 1);
+  check_parser("1", "ö" , "a", 1);
 
   /* Valid second arg, rest crap */
   check_parser("1", "+" , "a", 1);
