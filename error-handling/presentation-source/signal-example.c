@@ -7,15 +7,19 @@
 /*
  * Simple program to catch signals and handle accordingly
  *
- * If you want to send a signal using bash:
+ * If you want to send a signal using bash, use the script in the same folder as this c file.
  *
- *  1. define a bash function (type the below in your terminal running bash):
+ * To send a SIGINT signal:
  *
- *     sendsig() { PID=$(ps auxww| grep "./signal-ex" | grep -v grep | awk '{ printf $2}'); kill -$1 $PID; }
+ *   ./sendsig SIGINT
  *
- *  2. Use the function, 
+ * To send a SIGUSR1 signal:
  *
- *     sendsig SIGINT
+ *   ./sendsig SIGUSR1
+ *
+ * To send a SIGUSR2 signal:
+ *
+ *   ./sendsig SIGUSR2
  *
  */
 
