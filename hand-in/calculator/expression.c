@@ -44,8 +44,8 @@ string_to_op(char *str)
   */
   while (op_strings[(int)++i]!=NULL)
     {
-      printf ("i: %d  %s '%s' \n", 
-              i, op_strings[(int)i],str); 
+      /* printf ("i: %d  %s '%s' \n",  */
+      /*         i, op_strings[(int)i],str);  */
       if (comp_str(op_strings[(int)i],str))
         {
           return i;
