@@ -16,6 +16,10 @@
  * Compile (with and without the faked scanf) and execute the program
  * and try pressing ctrl-d when requested to input a name
  *
+ *
+ * scanf does not solve all the problems of the world but in this
+ * course at this moment it will do fine. 
+ *
  */
 
 
