@@ -1,8 +1,8 @@
 #include <stdlib.h>
 
-int * allocate_ints(int nr)
+int * allocate_ints(size_t nr)
 {
-  return calloc(sizeof(int), nr);
+  return calloc(nr, sizeof(int));
 }
 
 int set_ints(int *ints, int nr)
@@ -12,7 +12,7 @@ int set_ints(int *ints, int nr)
     {
       return 1;
     }
-  for (i=0;i<10;i++)
+  for (i=0;i<nr;i++)
     {
       ints[i] = i ;
     }

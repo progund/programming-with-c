@@ -77,7 +77,7 @@ main(void)
    * Allocate memory for 1 mediafile
    *
    */
-  mf = calloc(sizeof(mediafile), 1);
+  mf = calloc(1, sizeof(mediafile));
   if (mf == NULL)
     {
       exit(1);
