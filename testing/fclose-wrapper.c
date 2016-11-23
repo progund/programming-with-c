@@ -52,4 +52,6 @@ main(int argc, char **argv)
       fprintf(stderr, "Failed closing file: '%s'\n", file_name);
       return 1;
     }
+
+  return 0;
 }
