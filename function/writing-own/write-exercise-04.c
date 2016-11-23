@@ -14,5 +14,5 @@ int main()
     {
       printf("Test failed\n");
     }
-  printf ("All tests passed\n");
+  printf ("All tests performed - if no error all passed\n");
 }

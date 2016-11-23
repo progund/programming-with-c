@@ -18,8 +18,8 @@
 
 enum
   {
-    OK,
-    FAILED_OPEN_FILE,
+    OK,                /* 0 */
+    FAILED_OPEN_FILE,  /* 1 */
     PRINT_FAILURE,
     CLOSE_FAILURE
   } return_values;
@@ -45,7 +45,7 @@ print_file(char * file_name)
           return PRINT_FAILURE;
         }
     }
-  if (fclose (fp))
+  if (fclose (fp) != 0)
     {
       return CLOSE_FAILURE;
     }
@@ -89,7 +89,7 @@ main (int argc, char** argv)
               printf( "Failed reading file '%s'\n * %s\n",
                       file_name, strerror(errno) );
             }
-          else if (ret==FAILED_OPEN_FILE)
+          else if (ret==CLOSE_FAILURE)
             {
               printf( "Failed closing file '%s'\n * %s\n",
                       file_name, strerror(errno) );

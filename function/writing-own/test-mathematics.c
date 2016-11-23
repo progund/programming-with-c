@@ -5,7 +5,7 @@
 static char spin[]  = { '|', '/', '-', '\\'};
 static int   spindex ;
 #define NEXT_SPIN fprintf(stdout, "\b%c", spin[spindex++%4]);
-#define TEST_MIN_MAX(a,b) { fprintf(stdout, "Error, your function falsely returned of %d and %d is %d\n", a, b, max(a,b)) ; } else { usleep(5*1000); fflush(stdout);}
+#define TEST_MIN_MAX(a,b) { fprintf(stdout, "Error, your function falsely returned of %d and %d is %d\n", a, b, max(a,b)) ; } else { usleep(10*1000); fflush(stdout);}
 
 #define TEST_MAX(a,b) NEXT_SPIN; if(max(a,b)!=(a>b?a:b)) TEST_MIN_MAX(a,b)
 #define TEST_MIN(a,b) NEXT_SPIN; if(min(a,b)!=(a<b?a:b)) TEST_MIN_MAX)a,b)
