@@ -60,7 +60,7 @@ void handle_usr(int sigid)
     {
       printf ("signal received... %d\n", sigid);
       global_ctr -= 10  ;
-      }
+    }
   else if (sigid==SIGINT)
     {
       printf ("interrupt signal received... %d\n", sigid);
@@ -72,10 +72,10 @@ int main(void)
   signal(SIGUSR1, handle_usr);
 
   /* remove this if you want to "catch" SIGUSR2 */ 
-  //  signal(SIGUSR2, handle_usr);
+  signal(SIGUSR2, handle_usr);
 
   /* remove this if you want to "catch" SIGINT (caused by ctrl-c)*/
-  //signal(SIGINT, handle_usr);
+  /* signal(SIGINT, handle_usr); */
   
   while (1)
     {

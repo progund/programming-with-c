@@ -21,7 +21,6 @@ int main(void)
 
   ret = inform_user (msg);
 
-
   if ( ret < 0 )
     {
       fprintf(stderr, "Uh oh, output error is encountered\n");
