@@ -10,6 +10,16 @@ enum
     STRTOINT_ERROR
   };
 
+
+/*
+ * Returns status 
+ *    0 - if ok
+ *    not 0 - on failure (see enum)
+ *
+ * Parameters:
+ *   str - the string to convert to int
+ *   value - a pointer to an int where the result shalt be stored
+ */
 int strtoint(char* str, int* value);
 
 #endif /* STRTOINT_H */
