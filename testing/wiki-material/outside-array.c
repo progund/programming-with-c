@@ -1,17 +1,6 @@
 #include <stdio.h>
 
 
-void
-print_int_array(int *array, int size)
-{
-  int i ;
-  for (i=0;i<size;i++)
-    {
-      printf("array[%d]: %d\n", i, array[i]);
-    }
-}
-
-
 int
 main(void)
 {
