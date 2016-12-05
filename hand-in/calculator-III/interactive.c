@@ -6,8 +6,6 @@
 #include "interactive.h"
 
 #define BUF_SIZE 100
-#define INT_BUF_SIZE 20
-#define OP_BUF_SIZE  1
 
 static int read_expr_from_user(expr *e);
 static int interactive_loop(void);
@@ -29,21 +27,25 @@ static int interactive_loop(void)
 {
   int keep_reading=1;
   int ret;
-  int res;
+  /* int res; */
   expr e;
   while (keep_reading)
     {
 
       /* read from user */
       ret = read_expr_from_user(&e);
+      printf ("expr read from user  (ret:%d) - remove this printout later on\n", ret);
       /* handle error (if any) */
       
       /* calculate */
-      ret = calc_expression(&e, &res);
+      /* ret = calc_expression(&e, &res); */
       /* handle error (if any) */
 
-      printf ("%d\n", res);
+      printf ("faked reading...remove this when working with the assignment\n");
+      /* printf ("%d\n", res); */
+      keep_reading = 0 ;
     }
+  leave_message();
   return 0;
 }
 
@@ -51,13 +53,12 @@ static int read_expr_from_user(expr *e)
 {
   char buff[BUF_SIZE]; /* the size really is overkill */
 
-  char op_buff[OP_BUF_SIZE];
-  char op1_buff[INT_BUF_SIZE];
-  char op2_buff[INT_BUF_SIZE];
   char *str;
   
   str = fgets(buff, BUF_SIZE, stdin);
 
+  printf ("User typed: %s (%s) - remove this printout later on\n", buff, str);
+  printf ("Expression e is at address: %p - remove this printout later on \n", (void*)&e);
   /* Add code to handle str == NULL */
 
   /* Add code to handle str contains "quit" */
