@@ -17,5 +17,5 @@ print_array(int *arr, int size)
     {
       printf("%d ", arr[i]);
     }
-  printf ("]");
+  printf ("]\n");
 }
