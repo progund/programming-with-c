@@ -1,0 +1,2 @@
+int
+errprint(char *str);
