@@ -7,7 +7,7 @@ cunit:
 	./cu-max
 
 check:
-	gcc check-max.c simple-math.c -lm  -lcheck -o check-max && ./check-max
+	gcc check-max.c simple-math.c -lm  -lcheck -lrt  -pthread -lsubunit -o check-max && ./check-max
 
 
 gcov:
