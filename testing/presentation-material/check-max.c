@@ -2,16 +2,7 @@
 #include <check.h>
 #include <limits.h>
 
-int
-max(int a, int b)
-{
-  if (a>b)
-    {
-      return a;
-    }
-  return b;
-}
-
+#include "simple-math.h"
 
 
 START_TEST (test_max)

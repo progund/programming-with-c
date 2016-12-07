@@ -1,16 +1,9 @@
 #include <stdio.h>
 #include "CUnit/Basic.h"
 
+#include "simple-math.h"
 
-int
-max(int a, int b)
-{
-  if (a>b)
-    {
-      return a;
-    }
-  return b;
-}
+
 
 
 void
