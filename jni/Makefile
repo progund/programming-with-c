@@ -18,4 +18,5 @@ lib:
 	g++ -shared -fPIC -I$(JNI_PATH)/include -I$(JNI_PATH)/include/linux c/lovin_c.c -o c/liblove.so
 
 clean:
-	echo rm *.o c/*.so c/*.o $(CLASSES)
+	-rm *.o *.so c/*.so c/*.o $(CLASSES)
+	-find . -name "*~" | xargs rm
