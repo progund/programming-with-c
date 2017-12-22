@@ -24,6 +24,9 @@ big-db:$(PROG)
 mem-check: $(PROG)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(PROG) files/small.csv
 
+big-mem-check: $(PROG)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(PROG) files/products.csv
+
 clean:
 	-rm */*~ *~ src/*.o $(PROG) 
 
