@@ -1,3 +1,16 @@
+/************************************************
+ *
+ * (c) Rikard Fröberg, Henrik Sandklef 2017
+ *
+ * License: GPLv3
+ * 
+ * This piece of code is part of an example showing how to parse a csv
+ * file, normalize (think database), and print SQL statements.
+ *
+ * This code belogs here: 
+ *   http://wiki.juneday.se/mediawiki/index.php/Chapter:C_extra_csv
+ *
+ ************************************************/ 
 #include "product.h"
 #include "product-csv.h"
 #include "product-db.h"
