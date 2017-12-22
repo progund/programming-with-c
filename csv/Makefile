@@ -6,7 +6,7 @@ files/products.csv:
 
 download: files/products.csv
 
-prod:
+$(PROG):
 	gcc $(CFLAGS) src/*.c -o $(PROG)
 
 db:$(PROG)
