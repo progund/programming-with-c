@@ -74,3 +74,22 @@ We're using ```strsep``` instead.
 
 * (Valgrind)[http://valgrind.org/] - if you want to run the memory checks
 
+# Makefile
+
+The following targets are useful in the Makefile:
+
+* ```download``` - downloads the XML, XLS and creates the CSV file
+
+* ```db``` - to store the small csv file to a database file (files/products.db)
+
+* ```big-db``` - to store the big csv file (products.csv) to a database file (files/products.db)
+
+* ```mem-check``` - check memory with the small csv file
+
+* ```big-mem-check```  - check memory with the big csv file
+
+* ```clean``` - clean the generated files
+
+* ```cleanup``` - as clean but also removes the XLS, XML and csv files
+
+* ```run``` - (compile) and run the program
