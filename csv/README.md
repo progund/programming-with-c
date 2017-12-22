@@ -3,8 +3,7 @@
 We've gotten some questions from students how to parse a CSV file in
 C. We've also gotten a few questions in another course (Java) on how
 to do it in C. Ok let's give an example which we can use in a lab
-we've written (Exposing data over
-http)[http://wiki.juneday.se/mediawiki/index.php/Assignment:Exposing_data_over_http]. In
+we've written [Exposing data over http](http://wiki.juneday.se/mediawiki/index.php/Assignment:Exposing_data_over_http). In
 this lab the students get a CSV parse written in Java and should
 expose and consume the data using JSON.
 
