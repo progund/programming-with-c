@@ -16,23 +16,30 @@ exit_on_error()
 
 dload()
 {
-    echo -n "Dowloading $1: "
-    curl -s $1 -o $2
-    exit_on_error $?
-    echo "OK"
+    if [ ! -f $2 ]
+    then
+        echo -n "Dowloading $1: "
+        curl -s $1 -o $2
+        exit_on_error $?
+        echo "OK"
+    fi
 }
 
 xlstocsv()
 {
-    echo -n "Converting $1: " 
-    ssconvert $1 $2
-    exit_on_error $?
-    echo "OK"
+    if [ ! -f $2 ]
+    then
+        echo -n "Converting $1: " 
+        ssconvert $1 $2
+        exit_on_error $?
+        echo "OK"
+        
+        echo -n "Removing \" from $2: "
 
-    echo -n "Removing \" from $2: "
-    sed -i 's,",,g' $2
-    exit_on_error $?
-    echo "OK"
+        sed -i 's,",,g' $2
+        exit_on_error $?
+        echo "OK"
+    fi
 }
 
 FILES_DIR=files
