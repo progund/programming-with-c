@@ -25,6 +25,17 @@ new_product_list()
   return list;
 }
 
+static void free_group_table(group_table *t)
+{
+  unsigned int i;
+  LOG("freeing table");
+  for (i=0; i<(t->size); i++)
+    {
+      free(t->names[i]);
+    }
+  free(t->names);
+  t->names=NULL;
+}
 
 void
 free_product_list(product_list* list)
@@ -35,6 +46,9 @@ free_product_list(product_list* list)
       return;
     }
   LOG("freeing");
+
+  free_group_table(&list->groups);
+  
   for (i=0; i<(list->size); i++)
     {
       /* fprintf(stderr, "free at pos: %d\n", i); */
@@ -168,8 +182,9 @@ print_product(product* p)
     }
   LOG("printing product");
   /* printf("product: %p\n", (void*)p); */
-  printf(" * [%s, %d, %f, %f, %s, %s, %s, %s, %s, %f]\n",
+  printf(" * [%s, %d, %d, %f, %f, %s, %s, %s, %s, %s, %f]\n",
          EMPTY_IF_NULL(p->name),
+         p->group,
          p->nr, p->price, p->volume,
          EMPTY_IF_NULL(p->type),
          EMPTY_IF_NULL(p->style),
@@ -196,3 +211,43 @@ print_product_list(product_list* list)
       print_product(&list->products[i]);
     }
 }
+
+int
+group_to_int(product_list* list, char *group)
+{
+  int i;
+  char** tmp_ptr;
+  group_table* groups;
+  
+  if (group==NULL || list==NULL)
+    {
+      return -1;
+    }
+
+  groups = &list->groups; 
+  /* fprintf(stderr, "group_to_int(%s)  (size:%d)\n", */
+  /*         group, groups->size); */
+  for (i=0; i<(int)(groups->size); i++)
+    {
+      /* fprintf(stderr, " * %s\n", groups->names[i]); */
+      if (strncmp(groups->names[i], group, strlen(group))==0)
+        {
+          /* fprintf(stderr, " * %s => %d \n", groups->names[i], i); */
+          return i;
+        }
+    }
+  
+  /* fprintf(stderr, "new: %s\n", group); */
+  tmp_ptr = realloc(groups->names, sizeof(char*)*(groups->size+1));
+  if (tmp_ptr==NULL)
+    {
+      return -2;
+    }
+  groups->names = tmp_ptr;
+
+  groups->names[groups->size]=strdup(group);
+  groups->size++;  
+  /* fprintf(stderr, "new: %s => %d \n", groups->names[i], (int)((groups->size)-1)); */
+  return (int)(groups->size-1);
+}
+

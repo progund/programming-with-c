@@ -5,12 +5,20 @@
 extern const char* EMPTY_STRING;
 #define EMPTY_IF_NULL(s) (s==NULL?EMPTY_STRING:s)
 
+
+typedef struct group_table_
+{
+  char** names;
+  unsigned int size;
+} group_table;
+
 typedef struct _product
 {
   char  *name;
   unsigned int nr;
   float price;
   float volume;
+  int   group;
   char  *type;
   char  *style;
   char  *package;
@@ -18,6 +26,7 @@ typedef struct _product
   char  *producer;
   float alcohol;
 } product;
+
 
 enum
   {
@@ -30,6 +39,7 @@ typedef struct _product_list
 {
   product*      products;
   unsigned int  size;
+  group_table   groups;
 } product_list;
 
 
@@ -38,6 +48,10 @@ new_product_list(void);
 
 void
 free_product_list(product_list* list);
+
+int
+group_to_int(product_list* list, char *group);
+
 
 
 product*
@@ -60,6 +74,8 @@ print_product_list(product_list* list);
   if (p!=NULL) { p->volume=vo; }
 #define set_product_alcohol(p, al)\
   if (p!=NULL) { p->alcohol=al; }
+#define set_product_group(p, gr)\
+  if (p!=NULL) { p->group=gr; }
 
 #define PRODUCT_NAME     1
 #define PRODUCT_TYPE     2

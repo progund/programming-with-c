@@ -3,6 +3,10 @@
 
 #include "product.h"
 
+#define PRODUCT_DB products
+
+
+
 void
 print_product_db(product* p);
 

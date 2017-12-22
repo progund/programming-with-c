@@ -34,9 +34,10 @@ xlstocsv()
         exit_on_error $?
         echo "OK"
         
-        echo -n "Removing \" from $2: "
-
+        echo -n "Removing \" and ' from $2: "
         sed -i 's,",,g' $2
+        exit_on_error $?
+        sed -i "s,','',g" $2
         exit_on_error $?
         echo "OK"
     fi

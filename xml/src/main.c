@@ -1,5 +1,6 @@
 #include "product.h"
 #include "product-csv.h"
+#include "product-db.h"
 #include "log.h"
 
 int main(int argc, char **argv)
@@ -17,7 +18,7 @@ int main(int argc, char **argv)
       csv_to_product_list(list, "files/small.csv");
     }
   
-  print_product_list(list);
+  //  print_product_list(list);
   print_product_list_db(list);
 
   free_product_list(list);

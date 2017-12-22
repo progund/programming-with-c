@@ -105,7 +105,23 @@ static float strtofloat(char *str)
   return value;
 }
 
+static float strtofloat_alc(char *str)
+{
+  float value;
+  if (str==NULL)
+    {
+      return 0;
+    }
+  if (sscanf(str, "%f", &value)!=1)
+    {
+      return 0;
+    }
+  return value;
+}
+
 #define RETURN_IF_NULL(p) if (p==NULL) { printf("return %d\n", __LINE__); return; }
+
+
 
 static void
 parse_product_line(product_list* list, char *line)
@@ -159,6 +175,7 @@ parse_product_line(product_list* list, char *line)
   RETURN_IF_NULL(tok);
   // varugrupp
   tok = strsep(&line, delim);
+  set_product_group(p, group_to_int(list, tok));
   RETURN_IF_NULL(tok);
   // type
   tok = strsep(&line, delim);
@@ -201,9 +218,8 @@ parse_product_line(product_list* list, char *line)
   // alcohol
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
-  tok = strsep(&line, delim);
-  RETURN_IF_NULL(tok);
-  set_product_alcohol(p, strtofloat(tok));
+  //  printf ("ALCOHOL: '%s'\n", tok);
+  set_product_alcohol(p, strtofloat_alc(tok));
   // asortment
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
@@ -228,7 +244,12 @@ csv_to_product_list(product_list* list, char *file_name)
 
   while( (line=read_input(file)) != NULL )
     {
-      parse_product_line(list, line);
+      /* printf("%d '%s'\n", */
+      /*        (int)strlen(line), line); */
+      if ( strlen(line) > 1 )
+        {
+          parse_product_line(list, line);
+        }
       free(line);
     }
 
