@@ -43,7 +43,7 @@ which invokes the script above. The script uses [curl](https://curl.haxx.se/) to
 
 ## Converting to CSV
 
-We're using a program called ```ssconvert``` (part of (Gnumeric)[http://www.gnumeric.org/]). If it is available under Windows or MacOS we don't know. But we have provided the data files (XML, XLS and CSV) for you.
+We're using a program called ```ssconvert``` (part of [Gnumeric](http://www.gnumeric.org/)). If it is available under Windows or MacOS we don't know. But we have provided the data files (XML, XLS and CSV) for you.
 
 ## dealing with '
 
@@ -68,11 +68,11 @@ We're using ```strsep``` instead.
 
 # Software requirements
 
-* (curl)[https://curl.haxx.se/] - if you want to download the XML, XLS files instead of using the provided
+* [curl](https://curl.haxx.se/) - if you want to download the XML, XLS files instead of using the provided
 
-* (SQLite)[https://www.sqlite.org/] - if you want to store the data in a database
+* [SQLite](https://www.sqlite.org/) - if you want to store the data in a database
 
-* (Valgrind)[http://valgrind.org/] - if you want to run the memory checks
+* [Valgrind](http://valgrind.org/) - if you want to run the memory checks
 
 # Makefile
 
