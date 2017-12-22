@@ -39,7 +39,7 @@ or using the Makefile
 ```
 $ make download
 ```
-which invokes the script above. The script uses (curl)[https://curl.haxx.se/] to download.
+which invokes the script above. The script uses [curl](https://curl.haxx.se/) to download.
 
 ## Converting to CSV
 
