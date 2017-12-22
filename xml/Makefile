@@ -21,10 +21,10 @@ big-db:$(PROG)
 	@echo "SELECT COUNT(*) FROM product"     | sqlite3 files/products.db
 	@echo "SELECT COUNT(*) FROM productGroup" | sqlite3 files/products.db
 
-mem-check: $(PROG)
+mem-check: $(PROG) 
 	valgrind --leak-check=full --show-leak-kinds=all ./$(PROG) files/small.csv
 
-big-mem-check: $(PROG)
+big-mem-check: $(PROG) files/products.csv
 	valgrind --leak-check=full --show-leak-kinds=all ./$(PROG) files/products.csv
 
 clean:
