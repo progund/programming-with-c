@@ -2,7 +2,7 @@
  *
  * (c) Rikard Fröberg, Henrik Sandklef 2017
  *
- * License: GPLv3
+ * License: GPLv3 or later
  * 
  * This piece of code is part of an example showing how to parse a csv
  * file, normalize (think database), and print SQL statements.
@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "log.h"
 #include "product.h"
 #include "product-csv.h"
 
@@ -145,27 +146,39 @@ parse_product_line(product_list* list, char *line)
   product* p;
   static const char* delim = ",";
 
-  /* fprintf(stderr, "line: '%s'\n", line); */
+  LOG((" * line: '%s'\n", line));
 
+  /* example lines
+   * First line with header info:
+   * nr,Artikelid,Varnummer,Namn,Namn2,Prisinklmoms,Pant,Volymiml,PrisPerLiter,Saljstart,Utgått,Varugrupp,Typ,Stil,Forpackning,Forslutning,Ursprung,Ursprunglandnamn,Producent,Leverantor,Argang,Provadargang,Alkoholhalt,Sortiment,SortimentText,Ekologisk,Etiskt,EtisktEtikett,Koscher,RavarorBeskrivning
+   * Second line with real data:
+   * 101,1,1,Renat,,204.00,,700.00,291.43,1993/10/01,0,Okryddad sprit,,,Flaska,,,Sverige,Pernod Ricard,Pernod Ricard Sweden AB,,,37.50%,FS,Ordinarie sortiment,0,0,,0,Säd.
+   */
+  
   p = add_product(list);
   
   // nr
   tok = strsep(&line, delim);
   set_product_nr(p, strtoint(tok));
   RETURN_IF_NULL(tok);
+
   // discard artikel-id
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // discard varunummer
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // namn
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
   set_product_name(p, tok);
+
   // namn2
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // price
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
@@ -174,6 +187,7 @@ parse_product_line(product_list* list, char *line)
   // pant
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // volume
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
@@ -182,16 +196,20 @@ parse_product_line(product_list* list, char *line)
   // price per litre
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // sale start
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // out of stock
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // varugrupp
   tok = strsep(&line, delim);
   set_product_group(p, group_to_int(list, tok));
   RETURN_IF_NULL(tok);
+
   // type
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
@@ -205,12 +223,15 @@ parse_product_line(product_list* list, char *line)
   // packing
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // envelope
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // origin
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // origin country
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
@@ -224,23 +245,30 @@ parse_product_line(product_list* list, char *line)
   // deliver
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // year
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // year of test
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // alcohol
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   //  printf ("ALCOHOL: '%s'\n", tok);
   set_product_alcohol(p, strtofloat_alc(tok));
+
   // asortment
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // asortment text
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
+
   // eco .....
   tok = strsep(&line, delim);
   RETURN_IF_NULL(tok);
@@ -259,13 +287,15 @@ csv_to_product_list(product_list* list, char *file_name)
 
   while( (line=read_input(file)) != NULL )
     {
-      /* printf("%d '%s'\n", */
-      /*        (int)strlen(line), line); */
+      LOG(("%d '%s'\n", (int)strlen(line), line));
       if ( strlen(line) > 1 )
         {
           parse_product_line(list, line);
+          // The line has been screwed up by strsep so it's unusable
+          // No use reading it
         }
-      // The line has been screwed up by strsep so it's unusable
+      // read_input allocates (dnyamically) mem for the line, we must
+      // free it
       free(line);
     }
 

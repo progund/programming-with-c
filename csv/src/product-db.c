@@ -2,7 +2,7 @@
  *
  * (c) Rikard Fröberg, Henrik Sandklef 2017
  *
- * License: GPLv3
+ * License: GPLv3 or later
  * 
  * This piece of code is part of an example showing how to parse a csv
  * file, normalize (think database), and print SQL statements.
@@ -57,7 +57,7 @@ print_product_list_db(product_list* list)
     {
       return;
     }
-  LOG("printing product list");
+  LOG(("printing product list"));
   printf("CREATE TABLE productGroup(id INT PRIMARY KEY NOT NULL, name text);\n");
   printf("CREATE TABLE product(nr INT primary key not null, name text, price REAL, alcohol REAL, volume INT, productGroupId INT, type text, foreign key(productGroupId) references productGroup(id));\n");
 
@@ -65,7 +65,7 @@ print_product_list_db(product_list* list)
   
   for (i=0; i<(list->size); i++)
     {
-      /* fprintf(stderr, "print at pos: %d\n", i); */
+      LOG(("print at pos: %d\n", i));
       print_product_db(&list->products[i]);
     }
 }

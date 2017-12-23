@@ -2,7 +2,7 @@
  *
  * (c) Rikard Fröberg, Henrik Sandklef 2017
  *
- * License: GPLv3
+ * License: GPLv3 or later
  * 
  * This piece of code is part of an example showing how to parse a csv
  * file, normalize (think database), and print SQL statements.
@@ -25,7 +25,7 @@ const char* EMPTY_STRING="";
 product_list*
 new_product_list()
 {
-  LOG("creating new");
+  LOG(("creating new"));
   product_list* list =
     calloc(sizeof(product_list), 1);
   
@@ -41,7 +41,7 @@ new_product_list()
 static void free_group_table(group_table *t)
 {
   unsigned int i;
-  LOG("freeing table");
+  LOG(("freeing table"));
   for (i=0; i<(t->size); i++)
     {
       free(t->names[i]);
@@ -58,7 +58,7 @@ free_product_list(product_list* list)
     {
       return;
     }
-  LOG("freeing");
+  LOG(("freeing"));
 
   free_group_table(&list->groups);
   
@@ -86,7 +86,7 @@ add_product(product_list* list)
 {
   product* tmp_list;
   product *p;
-  LOG("add_product");
+  LOG(("add_product"));
   if (list==NULL)
     {
       return NULL;
@@ -121,7 +121,7 @@ add_product(product_list* list)
 unsigned int
 product_list_size(product_list* list)
 {
-  LOG("size");
+  LOG(("size"));
   if (list==NULL)
     {
       return PRODUCT_INVALID_ARGUMENTS;
@@ -193,7 +193,7 @@ print_product(product* p)
     {
       return;
     }
-  LOG("printing product");
+  LOG(("printing product"));
   /* printf("product: %p\n", (void*)p); */
   printf(" * [%s, %d, %d, %f, %f, %s, %s, %s, %s, %s, %f]\n",
          EMPTY_IF_NULL(p->name),
@@ -216,7 +216,7 @@ print_product_list(product_list* list)
     {
       return;
     }
-  LOG("printing product list");
+  LOG(("printing product list"));
   printf("Printing product list (%d products)\n", list->size);
   for (i=0; i<(list->size); i++)
     {

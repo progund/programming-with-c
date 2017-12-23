@@ -2,7 +2,7 @@
  *
  * (c) Rikard Fröberg, Henrik Sandklef 2017
  *
- * License: GPLv3
+ * License: GPLv3 or later
  * 
  * This piece of code is part of an example showing how to parse a csv
  * file, normalize (think database), and print SQL statements.
@@ -18,7 +18,7 @@
 
 int main(int argc, char **argv)
 {
-  LOG("start");
+  LOG(("start argc:%d", argc));
 
   product_list* list = new_product_list();
 

@@ -9,6 +9,9 @@ download: files/products.csv
 $(PROG):
 	gcc $(CFLAGS) src/*.c -o $(PROG)
 
+debug: clean
+	gcc -DDEBUG src/*.c -o $(PROG)
+
 db:$(PROG)
 	-rm files/products.db
 	./$(PROG) files/small.csv | sqlite3 files/products.db
