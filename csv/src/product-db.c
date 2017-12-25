@@ -14,7 +14,7 @@
 #include "product.h"
 #include "log.h"
 
-static void
+void
 print_product_db(product* p)
 {
   if(p==NULL)
