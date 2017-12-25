@@ -1,3 +1,21 @@
+UNAME := $(shell uname -s)
+
+MK_FILE=missing
+ifeq ($(UNAME), Linux)
+  MK_FILE=mk/linux.mk
+endif
+ifeq ($(UNAME), Darwin)
+  MK_FILE=mk/macos.mk
+endif
+ifeq ($(UNAME), CYGWIN_NT_5.1)
+  MK_FILE=mk/linux.cygwin
+endif
+ifeq ($(MK_FILE), missing)
+  $(error OS "$(UNAME)" not supported, we are sorry)
+else
+  include $(MK_FILE)
+endif
+
 CLASSES=se/juneday/FromCWithLove.class se/juneday/JNIDemo.class
 
 %.class:%.java
@@ -12,10 +30,8 @@ gen-header:
 	javah -d c/ se.juneday.FromCWithLove
 
 
-JNI_PATH=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.fc27.x86_64
-
 lib:
-	g++ -shared -fPIC -I$(JNI_PATH)/include -I$(JNI_PATH)/include/linux c/lovin_c.c -o c/liblove.so
+	g++ $(JNI_LD_FLAGS) $(JNI_INCS) c/lovin_c.c -o c/$(JNI_LIB_NAME)
 
 clean:
 	-rm *.o *.so c/*.so c/*.o $(CLASSES)
