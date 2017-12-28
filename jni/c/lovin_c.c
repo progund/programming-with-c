@@ -7,14 +7,14 @@
 JNIEXPORT jstring JNICALL Java_se_juneday_FromCWithLove_getSome
   (JNIEnv *env, jobject obj, jstring msg)
 {
-  #define BUF_SIZE 100
+#define BUF_SIZE 100
   char buf[BUF_SIZE];
   char *res;
   int len;
   jstring result;
   
   const char *from_java =
-    env->GetStringUTFChars(msg, NULL);
+    (*env)->GetStringUTFChars(env, msg, NULL);
   if (from_java==NULL)
     {
       return NULL;
@@ -31,9 +31,9 @@ JNIEXPORT jstring JNICALL Java_se_juneday_FromCWithLove_getSome
     }
   LOG(buf);
   
-  env->ReleaseStringUTFChars(msg, from_java);
+  (*env)->ReleaseStringUTFChars(env, msg, from_java);
 
-  result = env->NewStringUTF(buf); 
+  result = (*env)->NewStringUTF(env, buf); 
 
   return result;    
 }
