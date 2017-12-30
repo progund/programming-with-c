@@ -28,7 +28,7 @@ prog-o:clean $(MAIN_OBJS) $(OBJS)
 	gcc  $(MAIN_OBJS) lib/*.o -o $(PROG)
 	@echo "---- Examine program from object files ---- "
 	@echo "* sizes:"
-	du -sb lib/*.o
+	du -sbc lib/*.o
 	du -sb $(PROG)
 
 prog-shared: clean $(LIB_S) $(MAIN_OBJS)
@@ -36,11 +36,11 @@ prog-shared: clean $(LIB_S) $(MAIN_OBJS)
 	gcc  $(MAIN_OBJS) -Llib -lmedia -o $(PROG)
 	@echo "---- Examine program from shared library ---- "
 	@echo "* sizes:"
-	du -sb lib/*.o
+	du -sbc lib/*.o
 	du -sb $(LIB_S)
 	du -sb $(PROG)
 	@echo "* prog and lib size:"
-	du -bc $(PROG) $(LIB_S)
+	du -sbc $(PROG) $(LIB_S)
 
 prog-archive: clean $(LIB_A) main/media-manager.o
 	@echo "----  Linking program from archive ---- "
