@@ -67,7 +67,7 @@ typedef struct chat_client_
  * @param port - port number of the server to tonnect to
  * @return an integer idicating success (CHAT_CLIENT_OK e(0)) or error
  */
-int chat_init(chat_client* cc, char *hostname, int port);
+void * chat_init(char *hostname, int port);
 
 /** 
  * @brief Closes the chat session pointed to by the struct.

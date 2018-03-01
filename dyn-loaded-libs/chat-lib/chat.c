@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <strings.h>
+#include <stdlib.h>
 #include <string.h>
 #include <pthread.h>
 #include "chat.h"
@@ -53,22 +54,27 @@ void chat_set_feedback_fun(chat_client *cc, input_handler fun)
  * See API
  *
  */
-int
-chat_init(chat_client* cc, char *hostname, int port)
+void*
+chat_init(char *hostname, int port)
 {
+  chat_client* cc =
+    calloc(sizeof(chat_client), 1);
+
   if (cc==NULL || hostname==NULL)
     {
-      return CHAT_CLIENT_BAD_ARG;
+      return NULL;
     }
 
+  
   fprintf(stderr, "Setting host: %s:%d\n",
           hostname, port);
+
   cc->host_name = strdup("localhost"); //strdup(hostname);
   cc->port = 1066 ; //port;
 
   chat_set_feedback_fun(cc, (input_handler)print_msg);
   
-  return CHAT_CLIENT_OK;
+  return cc;
 }
 
 /*
