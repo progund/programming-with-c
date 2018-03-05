@@ -1,12 +1,14 @@
 CHAT_LIB=libchat.so
 CHAT_TEST_PROG=chat_main
 
-CFLAGS= -Wall -Werror -Wextra -fno-strict-aliasing
+CHAT_INTERFACE_PATH=../chat-program/interface
+
+CFLAGS= -Wall -Werror -Wextra -fno-strict-aliasing -I$(CHAT_INTERFACE_PATH) -g
 
 all: $(CHAT_LIB)
 
 $(CHAT_LIB):
-	gcc $(CFLAGS) -DDEBUG -shared -fPIC  chat.c -o $(CHAT_LIB)
+	gcc $(CFLAGS) -DDEBUG -shared -fPIC  chat-lib.c -o $(CHAT_LIB)
 
 lib: $(CHAT_LIB)
 

@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 #include "chat.h"
+#include "chat-lib.h"
 
 int feedback(const char *msg, void *cc)
 {
@@ -15,7 +16,7 @@ int feedback(const char *msg, void *cc)
 }
 
 int main(int argc, char **argv) {
-  chat_client cc;
+  chat_client *cc;
   int port;
   int ret;
 
@@ -40,8 +41,8 @@ int main(int argc, char **argv) {
   /*
    * Init chat client values
    */
-  ret = chat_init(&cc, argv[1], port);
-  if (ret!=CHAT_CLIENT_OK)
+  cc = (chat_client*) chat_init(argv[1], port);
+  if (cc==NULL)
     {
       fprintf(stderr, "Failed initialising the client\n");
       return 1;
@@ -50,30 +51,22 @@ int main(int argc, char **argv) {
   /*
    * Use our own feedback function
    */
-  chat_set_feedback_fun(&cc, feedback);
-  if (ret!=CHAT_CLIENT_OK)
-    {
-      fprintf(stderr, "Failed initialising the client\n");
-      return 1;
-    }
+  chat_set_feedback_fun(cc, feedback);
   
   /*
    * Enter chat - loop until bye or quit
    */
-  chat_loop(&cc);
-  if (ret!=CHAT_CLIENT_OK)
+  ret = chat_loop(cc);
+  if ( (ret!=CHAT_CLIENT_OK) && (ret!=CHAT_CLIENT_LEAVE) )
     {
       fprintf(stderr, "Failed initialising the client\n");
       return 1;
     }
 
-  printf ("sleeping\n");
-  usleep(1000*1000*10);
-  
   /*
    * Close the chat client
    */
-  chat_close(&cc);
+  chat_close(cc);
   
   return 0;
 }
