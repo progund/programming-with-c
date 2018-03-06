@@ -3,21 +3,23 @@
 #include <strings.h>
 #include <stdlib.h>
 #include <string.h>
-#include <pthread.h>
+
+#include "chat-lib.h"
 #include "chat.h"
+
 
 
 #define BUF_SIZE 1000 // buffer size for read
 
 
-static void* chat_loop_impl(void *arg);
+static int chat_loop_impl(void *arg);
 
 /*
  *
  * Built in function for printing chat client info
  *
  */
-void print_chat_client_info(chat_client *cc)
+static void print_chat_client_info(chat_client *cc)
 {
   fprintf(stderr, "\n\nChat client\n");
   fprintf(stderr, "* cc:        %p\n", (void*)cc);
@@ -65,12 +67,11 @@ chat_init(char *hostname, int port)
       return NULL;
     }
 
-  
-  fprintf(stderr, "Setting host: %s:%d\n",
-          hostname, port);
+  cc->host_name = strdup(hostname);
+  cc->port = port ; //port;
 
-  cc->host_name = strdup("localhost"); //strdup(hostname);
-  cc->port = 1066 ; //port;
+  fprintf(stderr, "host: %s:%d  (%p)\n",
+          hostname, port, cc);
 
   chat_set_feedback_fun(cc, (input_handler)print_msg);
   
@@ -95,7 +96,7 @@ static int open_socket(chat_client* cc)
     {
       fprintf(stderr, "Could not open socket");
       print_chat_client_info(cc);
-      return CHAT_CLIENT_COULD_NOT_OPEN_SOCKET;
+      return CHAT_CLIENT_COULD_NOT_OPEN_CHANNEL;
     }
   
   /* Find DNS entry for server */
@@ -104,7 +105,7 @@ static int open_socket(chat_client* cc)
     {
       fprintf(stderr, "Could not find host as %s\n", cc->host_name);
       print_chat_client_info(cc);
-      return CHAT_CLIENT_COULD_NOT_OPEN_SOCKET;
+      return CHAT_CLIENT_COULD_NOT_OPEN_CHANNEL;
     }
     
   /* build address */
@@ -120,9 +121,9 @@ static int open_socket(chat_client* cc)
               (struct sockaddr *)&(cc->serveraddr),
               sizeof(cc->serveraddr)) < 0)
     {
-      fprintf(stderr, "Could not connect to server\n");
+      fprintf(stderr, "Could not connect to server: %s:%d\n", cc->host_name, cc->port);
       print_chat_client_info(cc);
-      return CHAT_CLIENT_COULD_NOT_OPEN_SOCKET;
+      return CHAT_CLIENT_COULD_NOT_OPEN_CHANNEL;
     }
 
   FD_ZERO(&(cc->read_fds));
@@ -136,12 +137,9 @@ int
 chat_loop(chat_client *cc)
 {
   int ret;
-  
-  ret = pthread_create(&cc->chat_thread,
-                       NULL,
-                       chat_loop_impl,
-                       (void*)cc);
+
   cc->running = 1;
+  ret = chat_loop_impl(cc);
   return ret;
 }
 
@@ -150,7 +148,7 @@ chat_loop(chat_client *cc)
  * See API
  *
  */
-static void*
+static int
 chat_loop_impl(void *arg)
 {
   int bytes;
@@ -161,19 +159,20 @@ chat_loop_impl(void *arg)
   
   if (cc==NULL)
     {
-      return NULL;
+      return CHAT_CLIENT_BAD_ARG;
     }
 
   ret = open_socket(cc);
   if (ret!=CHAT_CLIENT_OK)
     {
       fprintf(stderr, "Failed opening socket: %d\n", ret);
-      return NULL;
+      cc->running=0;
+      return CHAT_CLIENT_COULD_NOT_OPEN_CHANNEL;
     }
 
   while (cc->running)
     {
-      printf("type>");
+      fprintf(stdout, "type>");
       fflush(stdout);
 
       FD_SET(STDIN_FILENO,&(cc->read_fds));
@@ -181,7 +180,7 @@ chat_loop_impl(void *arg)
 
       if (select((int)cc->nfds,&(cc->read_fds),NULL,NULL,NULL) == -1){
         fprintf(stderr, "select failed....");
-        return NULL;
+        return CHAT_CLIENT_COULD_NOT_OPEN_CHANNEL;
       }
 
       if (FD_ISSET(cc->sockfd, &(cc->read_fds)))
@@ -197,7 +196,8 @@ chat_loop_impl(void *arg)
             {
               /* inform listener */
               cc->feedback("Leaving since user typed 'bye'", cc);
-              return NULL ;
+              cc->running = 0;
+              return CHAT_CLIENT_LEAVE;
             }
           printf("feedbacking on %p\n", (unsigned char *)((void*)cc->feedback));
           printf("feedbacking on %p\n", (void*)cc->feedback);
@@ -212,12 +212,12 @@ chat_loop_impl(void *arg)
           ret = chat_handle_input(cc, buf);
           if (ret==CHAT_CLIENT_LEAVE)
             {
-              return NULL;
+              return CHAT_CLIENT_LEAVE;
             }
         }
       
     }
-  return NULL;
+  return CHAT_CLIENT_LEAVE;
 }
 
 /*
@@ -241,6 +241,8 @@ int chat_handle_input(chat_client *cc, char *msg)
 
   if (COMP_STR(".quit", msg)==0)
     {
+      cc->feedback("Leaving since user typed '.quit'", cc);
+      cc->running = 0;
       return CHAT_CLIENT_LEAVE;
     }
 
@@ -263,8 +265,13 @@ int chat_handle_input(chat_client *cc, char *msg)
 void chat_close(chat_client *cc)
 {
   cc->running=0;
-  pthread_cancel(cc->chat_thread);
-  
+
   close(cc->sockfd);
+  if (cc!=NULL) {
+    if( cc->host_name!=NULL) {
+      free(cc->host_name);
+    }
+    free(cc);
+  }
 }
 
