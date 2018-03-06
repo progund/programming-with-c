@@ -1,12 +1,15 @@
-OBJS=main.o
+OBJS=main.o plugin-loader.o
 PROG=fls
-CFLAGS= -Wall -pedantic -Werror -Wextra -fno-strict-aliasing -g -fPIC
+CFLAGS= -Wall -Werror -Wextra -fno-strict-aliasing -g -fPIC
 
 %.o:%.c
 	gcc -c $(CFLAGS) $<
 
 $(PROG):$(OBJS)
-	gcc $(OBJS) -o $(PROG)
+	gcc $(OBJS) -o $(PROG) -ldl
+
+plugin:
+	cd plugins && make all
 
 clean:
 	rm -f $(PROG) $(OBJS) *~
