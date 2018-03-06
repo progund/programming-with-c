@@ -30,7 +30,7 @@ int main (int argc, char **argv)
   
   if (dir != NULL)
     {
-      while (dirent = readdir (dir))
+      while ( (dirent = readdir (dir)) )
         {
           ret = default_present(dirent->d_name);
           if ( ret != FILE_LISTER_OK )
