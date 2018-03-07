@@ -117,6 +117,8 @@ $ nm main
 Note that the functions mean and sum are marked with "T", meaning they are the text section of the program - i e in the program.
 
 
+# Using shared object files
+
 ## Build a shared object file
 
 ```
