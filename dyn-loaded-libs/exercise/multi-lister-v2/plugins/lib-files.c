@@ -18,7 +18,7 @@ int present(char *name)
   if ( ( suffix != NULL ) &&
        (
         SAME_STR(suffix, ".a")   ||
-        SAME_STR(suffix, ".so")  )
+        SAME_STR(suffix, ".so")  ))
     {
       fprintf(stdout, "[library] %s\n", name);
       return FILE_LISTER_OK;
