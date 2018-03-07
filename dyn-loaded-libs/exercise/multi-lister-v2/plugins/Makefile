@@ -1,5 +1,5 @@
 
-PLUGINS=libc-files.so libo-files.so libo-files.so liblib-files.so
+PLUGINS=libc-files.so libo-files.so libo-files.so liblib-files.so libmk-files.so
 CFLAGS= -Wall -pedantic -Werror -Wextra -fno-strict-aliasing -g -fPIC -I../
 
 %.o:%.c
@@ -13,5 +13,8 @@ libo-files.so: o-files.o
 
 liblib-files.so: lib-files.o
 	gcc $< -shared -o liblib-files.so
+
+libmk-files.so: libmk-files.o
+	gcc $< -shared -o libmk-files.so
 
 all: $(PLUGINS)

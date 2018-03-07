@@ -27,6 +27,7 @@ int main(int argc, char **argv)
   plugin_add(plugins, "plugins/libc-files.so");
   plugin_add(plugins, "plugins/libo-files.so");
   plugin_add(plugins, "plugins/liblib-files.so");
+  plugin_add(plugins, "plugins/libmk-files.so");
   
   if (argc>1)
     {
