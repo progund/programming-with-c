@@ -1,7 +1,7 @@
 # Build it all - no archive, no shared object file
 
 ```
-$ gcc main.c lib/sum.c lib/mean.c -o main
+$ gcc main.c misc-stuff/sum.c misc-stuff/mean.c -o main
 $ ./main
 ```
 ## List the symbols in main
@@ -70,7 +70,7 @@ mean.o:
 ## Link the program (against the archive)
 
 ```
-$ gcc main.c -Llib -lmisc -o main
+$ gcc main.c -Lmisc-stuff -lmisc -o main
 $ ./main 
 mean: 2.66666666666666651864
 sum: 8
@@ -159,8 +159,8 @@ $ nm libmisc.so
 ## Link the program (against the shared object file)
 
 ```
-$ rm -f lib/libmisc.a
-$ gcc main.c -Llib -lmisc -o main
+$ rm -f misc-stuff/libmisc.a
+$ gcc main.c -Lmisc-stuff -lmisc -o main
 $ ./main 
 ./main: error while loading shared libraries: libmisc.so: cannot open shared object file: No such file or directory
 $ LD_LIBRARY_PATH=lib ./main 
