@@ -82,18 +82,26 @@ fl_plugins* plugin_new()
 void plugin_free(fl_plugins* flps)
 {
   int i;
+  /* if null, we better bail out */
   if (flps==NULL)
     {
       return;
     }
 
+  /* close all the handles (opened by dlopen) */
   for (i=0 ; i<flps->size ; i++)
     {
       dlclose(flps->plugins[i].handle);
     }
 
-  free(flps->plugins);
-
+  
+  /* free the array of plugins */
+  if (flps->plugins!=null)
+    {
+      free(flps->plugins);
+    }
+      
+  /* free the struct itself */
   free(flps);
 }
 
