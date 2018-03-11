@@ -31,7 +31,7 @@ gen-header:
 
 
 lib:
-	g++ $(JNI_LD_FLAGS) $(JNI_INCS) c/lovin_c.c -o c/$(JNI_LIB_NAME)
+	gcc $(JNI_LD_FLAGS) $(JNI_INCS) c/lovin_c.c -o c/$(JNI_LIB_NAME)
 
 clean:
 	-rm *.o *.so c/*.so c/*.o $(CLASSES)

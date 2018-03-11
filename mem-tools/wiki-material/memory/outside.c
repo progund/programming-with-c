@@ -9,10 +9,11 @@ int main(void)
   if (values==NULL)
     {
       fprintf(stderr, "Failed allocating memory\n");
+      return 1;
     }
 
   values[123]=123;
-  printf ("val %d\n", values[178]);
+  printf ("val %d\n", values[178000]);
 
   return 0;
 }

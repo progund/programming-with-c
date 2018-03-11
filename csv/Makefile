@@ -1,5 +1,6 @@
 PROG=prod
-CFLAGS=-pedantic -Wconversion -Wall -Werror -Wextra -Wstrict-prototypes -g
+CFLAGS=
+#-pedantic -Wconversion -Wall -Werror -Wextra -Wstrict-prototypes -g
 
 files/products.csv:
 	bin/download.sh

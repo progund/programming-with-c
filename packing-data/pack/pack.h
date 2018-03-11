@@ -4,6 +4,10 @@
 #define WHEEL_SPEED_MASK  0x18 // 00011000
 #define ENGINE_SPEED_MASK 0x07 // 00000111
 
+#define GEAR_POS_SHIFT     5
+#define WHEEL_SPEED_SHIFT  3 
+#define ENGINE_SPEED_SHIFT 0
+
 /**
  * bits:
  *  1-3, 3 bits [abc] : gear position, left shifted 5 

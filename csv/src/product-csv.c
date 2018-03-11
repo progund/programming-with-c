@@ -138,9 +138,144 @@ static float strtofloat_alc(char *str)
 #define RETURN_IF_NULL(p) if (p==NULL) { printf("return %d\n", __LINE__); return; }
 
 
-
 static void
 parse_product_line(product_list* list, char *line)
+{
+  char *tok;
+  product* p;
+  static const char* delim = ",";
+
+  LOG((" * line: '%s'\n", line));
+
+  /* example lines
+   * First line with header info:
+   * nr,Artikelid,Varnummer,Namn,Namn2,Prisinklmoms,Pant,Volymiml,PrisPerLiter,Saljstart,Utgått,Varugrupp,Typ,Stil,Forpackning,Forslutning,Ursprung,Ursprunglandnamn,Producent,Leverantor,Argang,Provadargang,Alkoholhalt,Sortiment,SortimentText,Ekologisk,Etiskt,EtisktEtikett,Koscher,RavarorBeskrivning
+   * Second line with real data:
+   * 101,1,1,Renat,,204.00,,700.00,291.43,1993/10/01,0,Okryddad sprit,,,Flaska,,,Sverige,Pernod Ricard,Pernod Ricard Sweden AB,,,37.50%,FS,Ordinarie sortiment,0,0,,0,Säd.
+   */
+  
+  p = add_product(list);
+
+  // nr
+  tok = strstr(line, delim);
+  set_product_nr(p, strtoint(tok));
+  RETURN_IF_NULL(tok);
+
+  // discard artikel-id
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // discard varunummer
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // namn
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+  set_product_name(p, tok);
+
+  // namn2
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // price
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+  set_product_price(p, strtofloat(tok));
+  
+  // pant
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // volume
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+  set_product_volume(p, strtofloat(tok));
+  
+  // price per litre
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // sale start
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // out of stock
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // varugrupp
+  tok = strsep(&line, delim);
+  set_product_group(p, group_to_int(list, tok));
+  RETURN_IF_NULL(tok);
+
+  // type
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+  set_product_type(p, tok);
+  
+  // style
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+  set_product_style(p, tok);
+
+  // packing
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // envelope
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // origin
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // origin country
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+  set_product_country(p, tok);
+
+  // producer
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+  set_product_producer(p, tok);
+  
+  // deliver
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // year
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // year of test
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // alcohol
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  //  printf ("ALCOHOL: '%s'\n", tok);
+  set_product_alcohol(p, strtofloat_alc(tok));
+
+  // asortment
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // asortment text
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+
+  // eco .....
+  tok = strsep(&line, delim);
+  RETURN_IF_NULL(tok);
+}
+
+
+static void
+pparse_product_line(product_list* list, char *line)
 {
   char *tok;
   product* p;

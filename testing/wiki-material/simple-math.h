@@ -14,4 +14,6 @@ mean(int *array, int size, int *result);
 #define DEBUG_INT_VAR(a) fprintf(stderr, "[%s:%s():%d] ",__FILE__,__func__, __LINE__ ); fprintf(stderr, "%s=%d\n", #a, a);
 #else
 #define DEBUG(a, ...) 
+#define DEBUG_INFO() 
+#define DEBUG_INT_VAR(a) 
 #endif

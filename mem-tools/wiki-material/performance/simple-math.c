@@ -4,25 +4,28 @@
 
 #include "simple-math.h"
 
-#ifdef MATH_DEBUG
-#define PRINT_INT_VAR(a) { print_int_var(#a, a); }
-#else
-#define PRINT_INT_VAR(a)
-#endif
+#ifdef MATH_DEBUG 
+#define PRINT_INT_VAR(a) { print_int_var(#a, a); } 
+#else  
+#define PRINT_INT_VAR(a) 
+#endif  
 
 static int math_debug_mode = 0;
 
-void set_math_debug(void)
+void
+set_math_debug(void)
 {
   math_debug_mode=1; 
 }
 
-void unset_math_debug(void)
+void
+unset_math_debug(void)
 {
   math_debug_mode=0; 
 }
 
-void print_int_var(char *str, int val)
+void
+print_int_var(char *str, int val)
 {
   if (math_debug_mode)
     {
@@ -70,6 +73,7 @@ mean(int *array, int size, int *result)
       // Check if the sum fits in an int
       if ((sum>INT_MAX) || (sum<INT_MIN) )
         {
+          printf ("sum: %lld\n", sum);
           return 3;
         }
       PRINT_INT_VAR(sum);

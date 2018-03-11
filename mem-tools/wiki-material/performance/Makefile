@@ -8,9 +8,14 @@ CFLAGS=-g
 
 help:
 	@echo "How to use this makefile"
-	@echo "  make debug - checks calls using debug mode"
-	@echo "  make normal - checks calls using normal mode"
-	@echo "  make check-time - checks timings using normal mode"
+	@echo "  normal - just run the program (debug unset)"
+	@echo "  debug - just run the program with debug set"
+	@echo "  check-mem - check memory leaks/reads/writes"
+	@echo "  debug-calls - checks calls using debug mode"
+	@echo "  normal-calls - checks calls using normal mode"
+	@echo "  check-normal-time - checks timings using normal mode"
+	@echo "  check-time-set - checks timings using debug mode and set_debug_mode"
+	@echo "  check-time-unset - checks timings using debug mode and unset_debug_mode"
 
 $(PROG): $(OBJS)
 	gcc -g $(CFLAGS) -lm $(OBJS) -o $(PROG)
@@ -21,14 +26,20 @@ $(OBJS): $(SRC)
 
 $(PROG): $(OBJS)
 
+normal: $(PROG)
+	$(PROG)
+
+debug:  clean debug-mode
+	$(PROG)
+
 debug-mode: CFLAGS+=-DMATH_DEBUG 
 debug-mode: $(OBJS) $(PROG)
 
-debug: clean debug-mode check-call
+debug-calls: clean debug-mode check-call
+	kcachegrind `ls callgrin*`
 
-normal-mode: $(PROG)
-
-normal:clean normal-mode check-call
+normal-calls:clean $(PROG) check-call
+	kcachegrind `ls callgrin*`
 
 check-call: 
 	$(VALGRIND) --tool=callgrind $(PROG)
@@ -40,13 +51,21 @@ gprof: $(PROG)
 check-mem: $(PROG)
 	$(VALGRIND) $(PROG)
 
-check-time:
-	@echo "Debug mode:"
-	@make clean debug-mode 2>/dev/null 
-	@time $(PROG) 2>/dev/null
+
+check-normal-time: 
 	@echo "Normal mode:"
-	@make clean normal-mode 2>/dev/null
-	@time $(PROG) 2>/dev/null | grep -v mean
+	@make clean $(PROG) 
+	@echo time $(PROG) | bash
+
+check-time-unset: 
+	@echo "Debug enabled with unset_debug  :"
+	@make clean debug-mode 
+	@echo time $(PROG) | bash
+
+check-time-set: 
+	@echo "Debug enabled with set_debug  :"
+	@make clean debug-mode 
+	@echo time $(PROG) extra args  | bash
 
 dist:
 	tar -cvf ../wiki-material.tar *

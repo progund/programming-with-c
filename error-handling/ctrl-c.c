@@ -14,7 +14,7 @@ int
 main(void)
 {
 
-  signal(SIGINT, sighandler);
+  /* signal(SIGINT, sighandler); */
   
   while (1)
     {

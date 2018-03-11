@@ -16,18 +16,29 @@
   assert(((vip)->wheel_speed)==sw);                      \
   assert(((vip)->engine_speed)==es);                     
 
-#define SET_AND_TEST_VI(vip, gp, sw, es, gpe, swe, ese) \
-  SET_VI(vip, gp, sw, es);                              \
-  pack_vechicle_info(&vi, &data);                       \
-  unpack_vechicle_info(data, &vi);                      \
-  TEST_VI(&vi, gpe, swe, ese);                  
+#define SET_AND_TEST_VI(vip, gp, sw, es, ret, gpe, swe, ese)            \
+  { int __ret;                                                          \
+    SET_VI(vip, gp, sw, es);                                            \
+    __ret=pack_vechicle_info(&vi, &data);                               \
+    assert(__ret==(ret));                                               \
+    if (__ret==0) {                                                     \
+    unpack_vechicle_info(data, &vi);                                    \
+    TEST_VI(&vi, gpe, swe, ese);                                        \
+    }                                                                   \
+  }
   
 
 int main(void)
 {
   vehicle_info vi;
   __uint8_t data;
-  
-  SET_AND_TEST_VI(&vi, 0, 0, 0,   0, 0, 0);
-  SET_AND_TEST_VI(&vi, 1, 1, 1,   1, 0, 0);
+  int i ;
+
+  printf("Testing gear position (pack and unpack):\n");
+  for (i=0; i<20; i++)
+    {
+      printf ("  gear_position=%d", i);fflush(stdout);
+      SET_AND_TEST_VI(&vi, i, 0, 0, (i<=6)?0:1,  i, 0, 0);
+      printf(" OK\n");
+    }
 }

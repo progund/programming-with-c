@@ -1,6 +1,6 @@
 /**
  * @file time-date.h
- * @brief Some functions for students
+ * @brief Some Time and Date utilities for students
  *
  * @author Henrik Sandklef & Rikard Fröberg
  *

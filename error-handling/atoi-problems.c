@@ -6,7 +6,6 @@ print_str_and_int(char *str)
 {
   printf ("%20s as an int: %d\n",
           str, atoi(str)); 
-
 }
 
 int

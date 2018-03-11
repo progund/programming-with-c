@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017, Henrik Sandklef, Rikard Fröberg
+ * Copyright (c) 2018, Henrik Sandklef, Rikard Fröberg
  *
  */
 #include <stdio.h>

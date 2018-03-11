@@ -15,7 +15,7 @@ static int default_present(char *name)
   return FILE_LISTER_OK;
 }
 
-int main (int argc, char **argv)
+int main(int argc, char **argv)
 {
   int ret;
   DIR *dir;
