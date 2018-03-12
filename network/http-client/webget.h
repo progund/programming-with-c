@@ -73,4 +73,4 @@ void web_close(web_client *cc);
  * @param cc - a pointer to web_client
  * @return an integer idicating success (WEB_CLIENT_OK e(0)) or error
  */
-int web_get(web_client *cc);
+int web_get(web_client *cc, char *path);

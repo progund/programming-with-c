@@ -79,19 +79,14 @@ static int open_socket(web_client* cc)
   return WEB_CLIENT_OK;
 }
 
-/*
- *
- * See API
- *
- */
-int
-web_get(web_client *cc)
+int web_get(web_client *cc, char *path)
 {
   int bytes;
   char buf[BUF_SIZE];
   int ret;
-  char *get = "GET /database-servlet HTTP 1.0\n\n";
+  char *get = " HTTP 1.0\n\n";
   
+  char request[1024];
   if (cc==NULL)
     {
       return WEB_CLIENT_BAD_ARG;
@@ -106,10 +101,13 @@ web_get(web_client *cc)
     }
 
   DEBUG_LOG();
+
+  strcpy(request, "GET /");
+  strcat(request, path);
+  strcat(request, get);
   
-  ret = (int)write(cc->sockfd, get, strlen(get));
-  fprintf(stderr, "Wrote %d bytes.  ret=%d\n",
-          (int)strlen(get), ret);
+  fprintf(stderr, "%s", request);
+  ret = (int)write(cc->sockfd, request, strlen(request));
   while (1)
     {
       bzero(buf, BUF_SIZE);
@@ -121,8 +119,7 @@ web_get(web_client *cc)
       if (bytes == 0)
         {
           /* inform listener */
-          fprintf(stderr, "Leaving since no data");
-          return WEB_CLIENT_ERROR;
+          return WEB_CLIENT_OK;
         }
       fprintf(stdout, "%s", buf);
     }
