@@ -22,6 +22,7 @@ int main(void)
   if (name == NULL)
     {
       /* Uh oh, we did not get any memory */
+      fprintf(stderr, "Uh oh, failed allocating memory with calloc\n");
       exit (1);
     }
 
@@ -36,6 +37,7 @@ int main(void)
   if (tmp == NULL)
     {
       /* Uh oh, we did not get any memory. Free the old mem and exit */
+      fprintf(stderr, "Uh oh, failed allocating memory with realloc\n");
       free(name);
       exit (1);
     }
