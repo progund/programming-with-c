@@ -60,7 +60,7 @@ int main()
   if(class ==0)
     {
       fprintf(stderr, " fail\n");
-      exit (1);
+      exit (2);
     }
   fprintf(stderr, " ok\n");
   
@@ -74,7 +74,7 @@ int main()
   if(method==0)
     {
       fprintf(stderr, " fail\n");
-      exit (1);
+      exit (3);
     }
   fprintf(stderr, " ok\n");
   
@@ -92,7 +92,7 @@ int main()
   if(method==0)
     {
       fprintf(stderr, " fail\n");
-      exit (1);
+      exit (4);
     }
   fprintf(stderr, " ok\n");
   message = (jstring) (*env)->CallStaticObjectMethod(env, class, method);

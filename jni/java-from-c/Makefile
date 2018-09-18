@@ -29,16 +29,16 @@ all: $(CLASSES) $(PROG)
 
 main.o: main.c
 	@echo "Compile main.c"
-	@gcc -c $(JNI_INCS) $< -o main.o
+	gcc -c $(JNI_INCS) $< -o main.o
 
 $(PROG): main.o
 	@echo "Link main.o"
-	@gcc $(JNI_LD_FLAGS) $< -o $(PROG)
+	gcc $(JNI_LD_FLAGS) $< -o $(PROG)
 
 run:
 	@echo 
 	@echo "Running program" 
-	@LD_LIBRARY_PATH=$(LD_LIBRARY) ./$(PROG) 
+	LD_LIBRARY_PATH=$(LD_LIBRARY) ./$(PROG) 
 
 clean:
 	@echo "Cleaning up"
