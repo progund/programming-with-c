@@ -1,4 +1,5 @@
 UNAME := $(shell uname -s)
+CC=gcc
 
 MK_FILE=missing
 ifeq ($(UNAME), Linux)
@@ -34,7 +35,7 @@ gen-header:
 
 
 lib:
-	gcc $(JNI_LD_FLAGS) $(JNI_INCS) c/lovin_c.c -o c/$(JNI_LIB_NAME)
+	$(CC) $(JNI_LD_FLAGS) $(JNI_INCS) c/lovin_c.c -o c/$(JNI_LIB_NAME)
 
 clean:
 	-rm *.o *.so c/*.so c/*.o $(CLASSES)
