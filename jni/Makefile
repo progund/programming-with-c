@@ -10,6 +10,9 @@ endif
 ifeq ($(UNAME), CYGWIN_NT_5.1)
   MK_FILE=mk/linux.cygwin
 endif
+ifeq ($(UNAME), CYGWIN_NT-10.0)
+  MK_FILE=mk/cygwin.mk
+endif
 ifeq ($(MK_FILE), missing)
   $(error OS "$(UNAME)" not supported, we are sorry)
 else
