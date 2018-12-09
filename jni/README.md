@@ -1,4 +1,6 @@
+# Introduction
 
+This source code is part of a tutorial on JNI. The tutorial (and possible videos) are linked from here: [http://wiki.juneday.se/mediawiki/index.php/Chapter:C_extra_JNI]
 
 # Setting up your environment
 
