@@ -20,7 +20,7 @@ else
   include $(MK_FILE)
 endif
 
-CLASSES=se/juneday/FromCWithLove.class se/juneday/JNIDemo.class
+CLASSES=se/juneday/FromCWithLove.class se/juneday/JNIDemo.class se/juneday/Stupid.class
 
 %.class:%.java
 	javac $<
