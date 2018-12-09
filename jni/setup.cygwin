@@ -1,0 +1,7 @@
+CC=x86_64-w64-mingw32-gcc
+JDKS_DIR=$(find /cygdrive/c/Program\ Files/Java/jdk* -prune -type d) 
+JDK_INC_DIR=$(dirname "$(find "$JDKS_DIR" -name "jni.h" | tail -1)")
+JDK_C_FLAGS="-I\"$JDK_INC_DIR\" -I\"$JDK_INC_DIR/win32\" -D__int64=\"long long\""
+JDK_LD_FLAGS=" -shared   -Wl,--add-stdcall-alias -o c/love.dll"
+JDK_LIB_DIR1="$(find "$JDK_INC_DIR"/../ -name 'jvm.dll')"
+JDK_LIB_DIR="$(dirname "$JDK_LIB_DIR1")"

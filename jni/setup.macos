@@ -1,0 +1,6 @@
+CC=gcc
+JDKS_DIR=$(find /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacO* -prune -type d)
+JDK_INC_DIR=$(dirname $(find $JDKS_DIR -name "jni.h" | tail -1));
+JDK_C_FLAGS=" -I\"$JDK_INC_DIR\"  -fPIC "
+JDK_LD_FLAGS=" -dynamiclib -o c/liblove.jnilib"
+JDK_LIB_DIR=$(dirname $(find $(/usr/libexec/java_home) -name "libjvm.dylib"))
