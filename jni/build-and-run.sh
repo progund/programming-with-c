@@ -76,8 +76,7 @@ using_java_from_c()
     echo -n "Executing C program (using Java code): "
     if [ "$OS" = "cygwin" ]
     then
-        PATH="$JDK_LIB_DIR":PATH ./c/c-program
-        exit_on_error $?
+        PATH="$JDK_LIB_DIR":$PATH ./c/c-program
     else
         LD_LIBRARY_PATH="$JDK_LIB_DIR" ./c/c-program
         exit_on_error $?
