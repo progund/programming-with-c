@@ -67,16 +67,16 @@ $ javac se/juneday/Stupid.java
 ~~~
 ## Compile C source code
 ~~~
-eval $CC  $JDK_C_FLAGS $JDK_LD_FLAGS c/c-program.c
+eval $CC -L"$JDK_LIB_DIR" $JDK_C_FLAGS -ljvm c/c-program.c -o c/c-program
 ~~~
 ## Execute C program (using Java class)
 ### Cygwin
 ~~~
-PATH="$JDK_LIB_DIR":PATH ./main
+PATH="$JDK_LIB_DIR":PATH ./c/c-program
 ~~~
 ### MacOS/GNU/linux
 ~~~
-LD_LIBRARY_PATH="$JDK_LIB_DIR" ./main
+LD_LIBRARY_PATH="$JDK_LIB_DIR" ./c/c-program
 ~~~
 
 
