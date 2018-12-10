@@ -69,7 +69,7 @@ using_java_from_c()
     echo "OK"
 
     echo -n "Compiling C source code: "
-    eval $CC  $JDK_C_FLAGS $JDK_LD_FLAGS c/c-program.c
+    eval $CC -L"$JDK_LIB_DIR" $JDK_C_FLAGS -ljvm c/c-program.c -o c/c-program
     exit_on_error $?
     echo "OK"
 
