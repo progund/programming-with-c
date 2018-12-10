@@ -3,7 +3,7 @@
 if [ "$(uname  | grep -ic linux)" != "0" ]
 then
     OS=linux
-elif [ "    $(uname  | grep -ic darwin)" != "0" ]
+elif [ "$(uname  | grep -ic darwin)" != "0" ]
 then
     OS=macos
 elif [ "$(uname  | grep -ic cygwin)" != "0" ]
