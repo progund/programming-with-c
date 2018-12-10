@@ -19,7 +19,7 @@ fi
 exit_on_error() {
     if [ $1 -ne 0 ]
     then
-        if [ $2 -! "" ]
+        if [ "$2" -! "" ]
         then
             echo "Failed: $2"
         else
